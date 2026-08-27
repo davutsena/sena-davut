@@ -1,0 +1,3834 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sena için özel hazırlanmış doğum günü sayfası">
+<meta name="theme-color" content="#ff7a1a">
+<title>İyi ki varsın Senam 🖤🧡</title>
+<style>
+  :root{
+    --orange:#ff7a1a;
+    --orange-soft:#ffb26b;
+    --orange-light:#ffd08a;
+    --pink:#ff6b9d;
+    --purple:#b794f6;
+    --yellow:#ffd700;
+    --black:#0b0b0d;
+    --black-2:#151517;
+    --white:#f5f1ea;
+  }
+  
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+  
+  body{
+    background: radial-gradient(circle at 20% 0%, #1a1310 0%, var(--black) 55%);
+    color:var(--white);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    min-height:100vh;
+    padding: clamp(20px, 5vw, 40px) clamp(12px, 4vw, 16px) 80px;
+    overflow-x:hidden;
+    position:relative;
+  }
+  
+  .wrap{
+    max-width:900px;
+    margin:0 auto;
+    position:relative;
+  }
+
+  .page-container{
+    min-height:100vh;
+    padding: clamp(20px, 5vw, 40px) clamp(12px, 4vw, 16px) 80px;
+  }
+
+  .page-header{
+    text-align:center;
+    margin-bottom:clamp(40px, 8vw, 64px);
+    position:relative;
+    z-index:1;
+    animation:fadeInDown .8s ease-out;
+  }
+
+  .page-title{
+    font-size:clamp(2.5rem, 8vw, 4rem);
+    font-weight:900;
+    color:var(--white);
+    text-shadow: 0 0 30px rgba(255,122,26,.6), 0 4px 12px rgba(0,0,0,.4);
+    letter-spacing:3px;
+    line-height:1.1;
+    margin-bottom:12px;
+  }
+
+  .page-subtitle{
+    color:#d4cec3;
+    font-size:clamp(1rem, 2.5vw, 1.2rem);
+    line-height:1.6;
+  }
+
+  /* HAMBURGER MENU BUTTON */
+  .hamburger-btn{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:1000;
+    width:50px;
+    height:50px;
+    background:rgba(21,21,23,.9);
+    border:2px solid rgba(255,122,26,.3);
+    border-radius:12px;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    backdrop-filter:blur(10px);
+    transition:all .3s ease;
+    box-shadow:0 4px 20px rgba(0,0,0,.5);
+  }
+
+  .hamburger-btn:hover{
+    border-color:var(--orange);
+    transform:scale(1.05);
+    box-shadow:0 6px 25px rgba(255,122,26,.4);
+  }
+
+  .hamburger-btn span{
+    width:24px;
+    height:3px;
+    background:var(--orange);
+    border-radius:3px;
+    transition:all .3s ease;
+  }
+
+  .hamburger-btn:hover span{
+    background:var(--orange-soft);
+  }
+
+  /* SIDEBAR */
+  .sidebar{
+    position:fixed;
+    top:0;
+    left:-320px;
+    width:300px;
+    height:100vh;
+    background:linear-gradient(160deg, rgba(28,21,15,.98), rgba(21,21,23,.98));
+    backdrop-filter:blur(20px);
+    border-right:2px solid rgba(255,122,26,.3);
+    z-index:1001;
+    transition:left .4s cubic-bezier(.4,0,.2,1);
+    display:flex;
+    flex-direction:column;
+    box-shadow:4px 0 40px rgba(0,0,0,.8);
+  }
+
+  .sidebar.open{
+    left:0;
+  }
+
+  .sidebar-header{
+    padding:24px 20px;
+    border-bottom:1px solid rgba(255,122,26,.2);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .sidebar-header h3{
+    font-size:1.5rem;
+    color:var(--orange-soft);
+    font-weight:700;
+    letter-spacing:1px;
+  }
+
+  .close-btn{
+    width:36px;
+    height:36px;
+    background:transparent;
+    border:2px solid rgba(255,122,26,.3);
+    border-radius:8px;
+    color:var(--orange);
+    font-size:1.5rem;
+    cursor:pointer;
+    transition:all .3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  }
+
+  .close-btn:hover{
+    background:rgba(255,122,26,.1);
+    border-color:var(--orange);
+    transform:rotate(90deg);
+  }
+
+  .sidebar-nav{
+    flex:1;
+    padding:20px 0;
+    overflow-y:auto;
+  }
+
+  .sidebar-nav ul{
+    list-style:none;
+  }
+
+  .sidebar-nav li{
+    margin:0;
+  }
+
+  .nav-link{
+    display:block;
+    padding:16px 24px;
+    color:var(--white);
+    text-decoration:none;
+    font-size:1.05rem;
+    font-weight:500;
+    transition:all .3s ease;
+    border-left:4px solid transparent;
+    letter-spacing:.5px;
+  }
+
+  .nav-link:hover{
+    background:rgba(255,122,26,.1);
+    border-left-color:var(--orange);
+    padding-left:30px;
+  }
+
+  .nav-link.active{
+    background:rgba(255,122,26,.15);
+    border-left-color:var(--orange);
+    color:var(--orange-soft);
+  }
+
+  .sidebar-footer{
+    padding:20px;
+    border-top:1px solid rgba(255,122,26,.2);
+    text-align:center;
+    color:#9a8d7d;
+    font-size:.9rem;
+  }
+
+  /* SIDEBAR OVERLAY */
+  .sidebar-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:999;
+    opacity:0;
+    visibility:hidden;
+    transition:all .4s ease;
+    backdrop-filter:blur(2px);
+  }
+
+  .sidebar-overlay.active{
+    opacity:1;
+    visibility:visible;
+  }
+
+  /* FLOATING BALLOONS BG */
+  .balloon{
+    position:fixed;
+    bottom:-80px;
+    width:40px;
+    height:50px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: floatUp ease-in infinite;
+    pointer-events:none;
+    z-index:0;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
+  }
+  
+  .balloon::before{
+    content:'';
+    position:absolute;
+    bottom:-8px;
+    left:50%;
+    transform:translateX(-50%);
+    width:2px;
+    height:30px;
+    background:rgba(255,255,255,.3);
+  }
+  
+  .balloon::after{
+    content:'▼';
+    position:absolute;
+    bottom:-12px;
+    left:50%;
+    transform:translateX(-50%) scale(.6);
+    color:inherit;
+    opacity:.8;
+  }
+  
+  @keyframes floatUp{
+    0%{
+      transform:translateY(0) translateX(0) rotate(0deg);
+      opacity:.8;
+    }
+    50%{
+      transform:translateY(-50vh) translateX(20px) rotate(10deg);
+      opacity:1;
+    }
+    100%{
+      transform:translateY(-110vh) translateX(-10px) rotate(-5deg);
+      opacity:0;
+    }
+  }
+
+  /* HEADER */
+  header{
+    text-align:center;
+    margin-bottom:clamp(40px, 8vw, 64px);
+    position:relative;
+    z-index:1;
+    animation:fadeInDown .8s ease-out;
+  }
+  
+  @keyframes fadeInDown{
+    from{
+      opacity:0;
+      transform:translateY(-20px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+  
+  .badge{
+    display:inline-block;
+    padding:8px 20px;
+    border:2px solid var(--orange);
+    border-radius:999px;
+    color:var(--orange-soft);
+    font-size:clamp(10px, 2.5vw, 12px);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    animation: glow 2.5s ease-in-out infinite;
+    font-weight:600;
+    backdrop-filter:blur(10px);
+    background:rgba(255,122,26,.05);
+  }
+  
+  @keyframes glow{
+    0%,100%{
+      box-shadow:0 0 8px rgba(255,122,26,.3), inset 0 0 8px rgba(255,122,26,.1);
+    }
+    50%{
+      box-shadow:0 0 20px rgba(255,122,26,.6), inset 0 0 12px rgba(255,122,26,.2);
+    }
+  }
+  
+  .main-title{
+    font-size:clamp(2rem, 8vw, 4rem);
+    font-weight:800;
+    line-height:1.15;
+    background: linear-gradient(120deg, var(--orange) 0%, var(--orange-light) 45%, var(--orange) 100%);
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    letter-spacing:2px;
+    animation: shine 4s linear infinite;
+    margin-bottom:8px;
+  }
+  
+  @keyframes shine{
+    to{
+      background-position:200% center;
+    }
+  }
+  
+  h1.name{
+    font-size:clamp(2.8rem, 11vw, 5.5rem);
+    font-weight:900;
+    color:var(--white);
+    margin-top:8px;
+    text-shadow: 0 0 30px rgba(255,122,26,.6), 0 4px 12px rgba(0,0,0,.4);
+    letter-spacing:3px;
+    line-height:1.1;
+  }
+  
+  header p{
+    color:#d4cec3;
+    margin-top:16px;
+    font-size:clamp(.95rem, 2.5vw, 1.1rem);
+    line-height:1.6;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .hr-deco{
+    width:clamp(80px, 20vw, 140px);
+    height:4px;
+    margin:24px auto 0;
+    background:linear-gradient(90deg, transparent, var(--orange), transparent);
+    border-radius:4px;
+    box-shadow:0 0 12px rgba(255,122,26,.4);
+  }
+
+  /* STATS */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px),1fr));
+    gap:clamp(12px, 3vw, 18px);
+    margin-bottom:clamp(48px, 10vw, 72px);
+    position:relative;
+    z-index:1;
+  }
+  
+  .stat-card{
+    background:rgba(21,21,23,.8);
+    border:1px solid rgba(255,122,26,.2);
+    border-radius:20px;
+    padding:clamp(20px, 5vw, 28px) clamp(14px, 3vw, 18px);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    transition: all .3s cubic-bezier(.4,0,.2,1);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+  }
+  
+  .stat-card:hover{
+    transform:translateY(-6px) scale(1.02);
+    border-color:var(--orange);
+    box-shadow:0 8px 30px rgba(255,122,26,.3), 0 0 40px rgba(255,122,26,.1);
+  }
+  
+  .stat-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(160deg, rgba(255,122,26,.16), transparent 65%);
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  
+  .stat-card:hover::before{
+    opacity:1;
+  }
+  
+  .stat-label{
+    font-size:clamp(.7rem, 2vw, .82rem);
+    color:#c9bfb0;
+    text-transform:uppercase;
+    letter-spacing:1.8px;
+    margin-bottom:14px;
+    position:relative;
+    font-weight:600;
+  }
+  
+  .live-time{
+    display:flex;
+    justify-content:center;
+    gap:clamp(6px, 2vw, 10px);
+    position:relative;
+    flex-wrap:wrap;
+  }
+  
+  .live-unit{
+    text-align:center;
+    min-width:clamp(38px, 10vw, 48px);
+  }
+  
+  .live-num{
+    font-size:clamp(1.3rem, 4vw, 1.6rem);
+    font-weight:800;
+    color:var(--orange);
+    font-variant-numeric:tabular-nums;
+    line-height:1.2;
+    text-shadow:0 2px 8px rgba(255,122,26,.3);
+  }
+  
+  .live-sub{
+    font-size:clamp(.58rem, 1.5vw, .64rem);
+    color:#a39889;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    margin-top:2px;
+  }
+  
+  .simple-num{
+    font-size:clamp(2rem, 6vw, 2.6rem);
+    font-weight:800;
+    color:var(--orange);
+    position:relative;
+    text-shadow:0 2px 12px rgba(255,122,26,.4);
+  }
+
+  /* BABY SECTION */
+  .baby-box{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(24px, 5vw, 32px);
+    text-align:center;
+    position:relative;
+    z-index:1;
+    margin-bottom:clamp(48px, 10vw, 72px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  
+  .baby-box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 40px rgba(255,122,26,.2);
+  }
+  
+  .baby-box .tl-date{
+    display:block;
+    margin-bottom:8px;
+    font-size:clamp(.8rem, 2vw, .9rem);
+  }
+  
+  .baby-title{
+    font-size:clamp(1.2rem, 4vw, 1.4rem);
+    font-weight:800;
+    color:var(--white);
+    margin-bottom:12px;
+    text-shadow:0 2px 8px rgba(0,0,0,.3);
+  }
+  
+  .baby-photo-slot{
+    min-height:clamp(150px, 35vw, 300px);
+    border:2px dashed rgba(255,122,26,.3);
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#9a8b78;
+    font-size:clamp(.8rem, 2.5vw, .9rem);
+    margin-top:18px;
+    background:rgba(0,0,0,.2);
+    transition:all .3s ease;
+    overflow:hidden;
+    padding:10px;
+  }
+
+  .baby-photo-slot img{
+    width:auto;
+    max-width:100%;
+    max-height:clamp(300px, 50vh, 400px);
+    height:auto;
+    object-fit:contain;
+    border-radius:14px;
+  }
+  
+  .baby-photo-slot:hover{
+    border-color:var(--orange);
+    background:rgba(255,122,26,.05);
+    transform:scale(1.01);
+  }
+
+  /* TIMELINE */
+  .section-title{
+    font-size:clamp(1.3rem, 4vw, 1.6rem);
+    color:var(--orange-soft);
+    margin-bottom:clamp(24px, 6vw, 36px);
+    text-align:center;
+    letter-spacing:1.5px;
+    position:relative;
+    z-index:1;
+    font-weight:700;
+    text-shadow:0 2px 12px rgba(255,122,26,.3);
+  }
+  
+  .timeline{
+    position:relative;
+    padding-left:clamp(24px, 6vw, 32px);
+    z-index:1;
+    margin-bottom:clamp(48px, 10vw, 72px);
+  }
+  
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:8px;
+    top:8px;
+    bottom:8px;
+    width:3px;
+    background:linear-gradient(180deg, var(--orange), rgba(255,122,26,.3));
+    border-radius:3px;
+    box-shadow:0 0 8px rgba(255,122,26,.4);
+  }
+  
+  .tl-item{
+    position:relative;
+    margin-bottom:clamp(28px, 6vw, 42px);
+    background:rgba(21,21,23,.8);
+    border:1px solid rgba(255,122,26,.2);
+    border-radius:16px;
+    padding:clamp(16px, 4vw, 22px) clamp(18px, 4vw, 24px);
+    backdrop-filter:blur(10px);
+    transition:all .3s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+  }
+  
+  .tl-item:hover{
+    transform:translateX(6px);
+    border-color:var(--orange);
+    box-shadow:0 8px 30px rgba(255,122,26,.25);
+  }
+  
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:calc(-1 * clamp(24px, 6vw, 32px) + 2px);
+    top:24px;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:var(--orange);
+    box-shadow:0 0 0 4px rgba(255,122,26,.25), 0 0 16px rgba(255,122,26,.5);
+    transition:all .3s ease;
+  }
+  
+  .tl-item:hover::before{
+    transform:scale(1.3);
+    box-shadow:0 0 0 6px rgba(255,122,26,.3), 0 0 20px rgba(255,122,26,.7);
+  }
+  
+  .tl-date{
+    color:var(--orange);
+    font-weight:700;
+    font-size:clamp(.78rem, 2vw, .88rem);
+    letter-spacing:1.5px;
+    text-shadow:0 1px 4px rgba(255,122,26,.3);
+  }
+  
+  .tl-title{
+    font-size:clamp(1.05rem, 3vw, 1.2rem);
+    font-weight:700;
+    margin:8px 0 10px;
+    color:var(--white);
+    line-height:1.3;
+  }
+  
+  .tl-text{
+    color:#d9d2c5;
+    font-size:clamp(.88rem, 2.5vw, .98rem);
+    line-height:1.65;
+  }
+
+  .photo-slot{
+    margin-top:16px;
+    height:clamp(130px, 30vw, 170px);
+    border:2px dashed rgba(255,122,26,.3);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#9a8b78;
+    font-size:clamp(.75rem, 2vw, .85rem);
+    text-align:center;
+    padding:12px;
+    background:rgba(0,0,0,.2);
+    transition:all .3s ease;
+  }
+  
+  .photo-slot:hover{
+    border-color:var(--orange);
+    background:rgba(255,122,26,.05);
+    transform:scale(1.01);
+  }
+
+  footer{
+    text-align:center;
+    margin-top:clamp(60px, 12vw, 90px);
+    padding-top:30px;
+    border-top:1px solid rgba(255,122,26,.15);
+    color:#9a8d7d;
+    font-size:clamp(.8rem, 2vw, .9rem);
+    position:relative;
+    z-index:1;
+  }
+  
+  footer span{
+    color:var(--orange);
+    font-weight:600;
+  }
+
+  /* DAILY NOTE SECTION */
+  .daily-note-box{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(28px, 6vw, 40px);
+    position:relative;
+    z-index:1;
+    margin-bottom:clamp(48px, 10vw, 72px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+    overflow:hidden;
+  }
+
+  .daily-note-box::before{
+    content:"";
+    position:absolute;
+    top:-50%;
+    right:-10%;
+    width:200px;
+    height:200px;
+    background:radial-gradient(circle, rgba(255,122,26,.15), transparent);
+    border-radius:50%;
+    animation:pulseGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow{
+    0%,100%{ transform:scale(1); opacity:.5; }
+    50%{ transform:scale(1.2); opacity:.8; }
+  }
+
+  .note-display{
+    background:rgba(0,0,0,.3);
+    border:2px solid rgba(255,122,26,.2);
+    border-radius:18px;
+    padding:clamp(28px, 6vw, 40px) clamp(24px, 5vw, 32px);
+    position:relative;
+    text-align:center;
+  }
+
+  .note-date{
+    font-size:clamp(.75rem, 2vw, .85rem);
+    color:var(--orange);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .note-date::before,
+  .note-date::after{
+    content:"";
+    width:30px;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--orange), transparent);
+  }
+
+  .note-text{
+    font-size:clamp(1.15rem, 3.5vw, 1.4rem);
+    line-height:1.75;
+    color:var(--white);
+    font-weight:500;
+    font-style:italic;
+    position:relative;
+    min-height:clamp(60px, 15vw, 80px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .note-text::before{
+    content:""";
+    position:absolute;
+    top:-10px;
+    left:-5px;
+    font-size:clamp(3rem, 8vw, 4rem);
+    color:var(--orange);
+    opacity:.2;
+    font-family:Georgia, serif;
+  }
+
+  .note-text::after{
+    content:""";
+    position:absolute;
+    bottom:-10px;
+    right:-5px;
+    font-size:clamp(3rem, 8vw, 4rem);
+    color:var(--orange);
+    opacity:.2;
+    font-family:Georgia, serif;
+  }
+
+  .note-footer{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,122,26,.15);
+  }
+
+  .note-icon{
+    font-size:clamp(1.2rem, 3vw, 1.4rem);
+    animation:float 3s ease-in-out infinite;
+  }
+
+  .note-info{
+    font-size:clamp(.85rem, 2vw, .95rem);
+    color:#b8b0a4;
+    font-weight:500;
+    letter-spacing:.5px;
+  }
+
+  /* DAILY PHOTO SECTION */
+  .daily-photo-box{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(28px, 6vw, 40px);
+    position:relative;
+    z-index:1;
+    margin-bottom:clamp(48px, 10vw, 72px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+  }
+
+  .daily-photo-container{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .daily-photo-frame{
+    width:100%;
+    max-width:600px;
+    margin:0 auto;
+    aspect-ratio:4/3;
+    border-radius:16px;
+    overflow:hidden;
+    background:rgba(0,0,0,.3);
+    border:3px solid rgba(255,122,26,.3);
+    box-shadow:0 8px 24px rgba(0,0,0,.5);
+    position:relative;
+    transition:all .3s ease;
+  }
+
+  .daily-photo-frame:hover{
+    border-color:var(--orange);
+    box-shadow:0 12px 32px rgba(255,122,26,.4);
+    transform:scale(1.02);
+  }
+
+  .daily-photo-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.2);
+  }
+
+  .daily-photo-icon{
+    font-size:clamp(3rem, 8vw, 4rem);
+    margin-bottom:16px;
+    opacity:.4;
+    animation:float 3s ease-in-out infinite;
+  }
+
+  .daily-photo-placeholder p{
+    font-size:clamp(.9rem, 2.5vw, 1rem);
+    color:#9a8b78;
+  }
+
+  #dailyPhoto{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .daily-photo-caption{
+    background:rgba(0,0,0,.3);
+    border:1px solid rgba(255,122,26,.2);
+    border-radius:14px;
+    padding:clamp(16px, 4vw, 20px);
+    text-align:center;
+  }
+
+  .caption-date{
+    display:block;
+    font-size:clamp(.75rem, 2vw, .85rem);
+    color:var(--orange);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+
+  .caption-text{
+    font-size:clamp(.95rem, 2.5vw, 1.05rem);
+    color:var(--white);
+    line-height:1.6;
+    font-style:italic;
+  }
+
+  /* LOVE REASONS SECTION */
+  .love-reasons-box{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(28px, 6vw, 40px);
+    text-align:center;
+    position:relative;
+    z-index:1;
+    margin-bottom:clamp(48px, 10vw, 72px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+  }
+
+  .reason-display{
+    background:rgba(0,0,0,.3);
+    border:2px solid rgba(255,122,26,.2);
+    border-radius:18px;
+    padding:clamp(24px, 5vw, 36px) clamp(20px, 4vw, 28px);
+    min-height:clamp(120px, 25vw, 150px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:24px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .reason-display::before{
+    content:"💕";
+    position:absolute;
+    top:10px;
+    right:10px;
+    font-size:clamp(2rem, 8vw, 3rem);
+    opacity:.15;
+    animation:heartbeat 2s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat{
+    0%,100%{ transform:scale(1); }
+    25%{ transform:scale(1.1); }
+    50%{ transform:scale(1); }
+  }
+
+  .reason-text{
+    font-size:clamp(1.05rem, 3vw, 1.25rem);
+    line-height:1.7;
+    color:var(--white);
+    font-weight:500;
+    position:relative;
+    z-index:1;
+    animation:fadeInReason .6s ease-out;
+  }
+
+  @keyframes fadeInReason{
+    from{
+      opacity:0;
+      transform:translateY(10px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+
+  .reason-btn{
+    background:linear-gradient(135deg, var(--orange), var(--orange-soft));
+    border:none;
+    border-radius:50px;
+    padding:clamp(14px, 3vw, 18px) clamp(28px, 6vw, 40px);
+    color:var(--black);
+    font-size:clamp(.95rem, 2.5vw, 1.05rem);
+    font-weight:700;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:all .3s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 4px 20px rgba(255,122,26,.4);
+    letter-spacing:.5px;
+  }
+
+  .reason-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 8px 30px rgba(255,122,26,.6);
+  }
+
+  .reason-btn:active{
+    transform:translateY(-1px) scale(1.02);
+  }
+
+  .reason-btn svg{
+    transition:transform .3s ease;
+  }
+
+  .reason-btn:hover svg{
+    transform:translateX(4px);
+  }
+
+  /* VIDEO MESSAGE SECTION */
+  .video-message-box{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(28px, 6vw, 40px);
+    position:relative;
+    z-index:1;
+    margin-bottom:clamp(48px, 10vw, 72px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+  }
+
+  .video-container{
+    position:relative;
+    width:100%;
+    max-width:700px;
+    margin:0 auto;
+    border-radius:16px;
+    overflow:hidden;
+    background:rgba(0,0,0,.4);
+    box-shadow:0 4px 24px rgba(0,0,0,.5);
+  }
+
+  #specialVideo{
+    width:100%;
+    display:block;
+    border-radius:16px;
+    background:#000;
+  }
+
+  .video-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:rgba(11,11,13,.85);
+    backdrop-filter:blur(5px);
+    padding:20px;
+    text-align:center;
+    pointer-events:none;
+    z-index:2;
+  }
+
+  .video-placeholder.hidden{
+    display:none;
+  }
+
+  .placeholder-icon{
+    font-size:clamp(3rem, 10vw, 5rem);
+    margin-bottom:16px;
+    animation:float 3s ease-in-out infinite;
+  }
+
+  @keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+
+  .video-placeholder p{
+    font-size:clamp(.95rem, 2.5vw, 1.1rem);
+    color:#d4cec3;
+    margin-bottom:12px;
+    font-weight:500;
+  }
+
+  .video-placeholder small{
+    font-size:clamp(.75rem, 2vw, .85rem);
+    color:#a39889;
+    line-height:1.6;
+  }
+
+  .video-placeholder code{
+    background:rgba(255,122,26,.15);
+    padding:3px 8px;
+    border-radius:6px;
+    color:var(--orange-soft);
+    font-family:monospace;
+    font-size:.9em;
+  }
+
+  .video-note{
+    margin-top:20px;
+    padding:14px 18px;
+    background:rgba(255,122,26,.08);
+    border-left:3px solid var(--orange);
+    border-radius:8px;
+    font-size:clamp(.85rem, 2vw, .92rem);
+    color:#d4cec3;
+    line-height:1.6;
+    text-align:left;
+  }
+
+  .video-note strong{
+    color:var(--orange-soft);
+  }
+
+  .video-note code{
+    background:rgba(255,122,26,.15);
+    padding:2px 6px;
+    border-radius:4px;
+    color:var(--orange-soft);
+    font-family:monospace;
+    font-size:.9em;
+  }
+
+  /* GALLERY GRID */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+    gap:clamp(16px, 3vw, 24px);
+    margin-bottom:clamp(40px, 8vw, 60px);
+    position:relative;
+    z-index:1;
+  }
+
+  .gallery-item{
+    position:relative;
+    aspect-ratio:1;
+    border-radius:16px;
+    overflow:hidden;
+    background:rgba(21,21,23,.8);
+    border:2px solid rgba(255,122,26,.2);
+    cursor:pointer;
+    transition:all .3s cubic-bezier(.4,0,.2,1);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+  }
+
+  .gallery-item:hover{
+    transform:translateY(-6px) scale(1.02);
+    border-color:var(--orange);
+    box-shadow:0 8px 30px rgba(255,122,26,.4);
+  }
+
+  .gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .gallery-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.2);
+    border:2px dashed rgba(255,122,26,.3);
+    border-radius:14px;
+    margin:8px;
+    transition:all .3s ease;
+  }
+
+  .gallery-item:hover .gallery-placeholder{
+    border-color:var(--orange);
+    background:rgba(255,122,26,.05);
+  }
+
+  .gallery-icon{
+    font-size:clamp(2.5rem, 6vw, 3.5rem);
+    margin-bottom:12px;
+    opacity:.5;
+  }
+
+  .gallery-placeholder p{
+    font-size:clamp(.8rem, 2vw, .9rem);
+    color:#9a8b78;
+    text-align:center;
+  }
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    animation:fadeIn .3s ease;
+  }
+
+  .lightbox.active{
+    display:flex;
+  }
+
+  .lightbox-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    background:rgba(255,122,26,.2);
+    border:2px solid var(--orange);
+    border-radius:50%;
+    color:var(--white);
+    font-size:2rem;
+    cursor:pointer;
+    transition:all .3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+    z-index:2001;
+  }
+
+  .lightbox-close:hover{
+    background:var(--orange);
+    transform:rotate(90deg);
+  }
+
+  .lightbox-prev,
+  .lightbox-next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    background:rgba(255,122,26,.2);
+    border:2px solid var(--orange);
+    border-radius:50%;
+    color:var(--white);
+    font-size:2rem;
+    cursor:pointer;
+    transition:all .3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+    z-index:2001;
+  }
+
+  .lightbox-prev{
+    left:20px;
+  }
+
+  .lightbox-next{
+    right:20px;
+  }
+
+  .lightbox-prev:hover,
+  .lightbox-next:hover{
+    background:var(--orange);
+    transform:translateY(-50%) scale(1.1);
+  }
+
+  #lightboxImg{
+    max-width:90%;
+    max-height:85vh;
+    object-fit:contain;
+    border-radius:12px;
+    box-shadow:0 8px 40px rgba(0,0,0,.8);
+  }
+
+  .lightbox-caption{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(21,21,23,.9);
+    padding:12px 24px;
+    border-radius:20px;
+    border:1px solid rgba(255,122,26,.3);
+    color:var(--white);
+    font-size:.95rem;
+    backdrop-filter:blur(10px);
+  }
+
+  /* MOVIES PAGE */
+  .movies-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap:clamp(20px, 4vw, 28px);
+    margin-bottom:clamp(40px, 8vw, 60px);
+    position:relative;
+    z-index:1;
+  }
+
+  .movie-card{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:20px;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    box-shadow:0 6px 24px rgba(0,0,0,.4);
+    transition:all .3s cubic-bezier(.4,0,.2,1);
+  }
+
+  .movie-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--orange);
+    box-shadow:0 12px 40px rgba(255,122,26,.3);
+  }
+
+  .movie-poster{
+    width:100%;
+    aspect-ratio:2/3;
+    position:relative;
+    overflow:hidden;
+    background:rgba(0,0,0,.3);
+  }
+
+  .movie-poster img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .movie-poster-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, rgba(255,122,26,.1), rgba(255,122,26,.05));
+  }
+
+  .movie-icon{
+    font-size:clamp(3rem, 8vw, 4rem);
+    opacity:.4;
+  }
+
+  .movie-info{
+    padding:clamp(16px, 4vw, 20px);
+  }
+
+  .movie-title{
+    font-size:clamp(1.1rem, 3vw, 1.3rem);
+    font-weight:700;
+    color:var(--orange-soft);
+    margin-bottom:8px;
+    line-height:1.3;
+  }
+
+  .movie-date{
+    font-size:clamp(.8rem, 2vw, .9rem);
+    color:#b8b0a4;
+    margin-bottom:10px;
+    font-weight:500;
+  }
+
+  .movie-note{
+    font-size:clamp(.88rem, 2.5vw, .95rem);
+    color:#d4cec3;
+    line-height:1.6;
+    font-style:italic;
+  }
+
+  /* MUSIC PAGE */
+  .playlist-container{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(24px, 5vw, 36px);
+    margin-bottom:clamp(48px, 10vw, 64px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+    position:relative;
+    z-index:1;
+  }
+
+  .playlist-container iframe{
+    border-radius:12px;
+    width:100%;
+    height:380px;
+    border:none;
+  }
+
+  .playlist-placeholder{
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.2);
+    border:2px dashed rgba(255,122,26,.3);
+    border-radius:16px;
+    padding:40px 20px;
+    text-align:center;
+  }
+
+  .playlist-icon{
+    font-size:clamp(3.5rem, 10vw, 5rem);
+    margin-bottom:20px;
+    animation:float 3s ease-in-out infinite;
+  }
+
+  .playlist-placeholder p{
+    font-size:clamp(1rem, 3vw, 1.2rem);
+    color:var(--white);
+    margin-bottom:12px;
+    font-weight:600;
+  }
+
+  .playlist-placeholder small{
+    font-size:clamp(.8rem, 2vw, .9rem);
+    color:#a39889;
+    line-height:1.6;
+  }
+
+  .songs-section{
+    position:relative;
+    z-index:1;
+    margin-bottom:clamp(40px, 8vw, 60px);
+  }
+
+  .section-desc{
+    text-align:center;
+    color:#b8b0a4;
+    font-size:clamp(.9rem, 2.5vw, 1rem);
+    margin-bottom:clamp(24px, 6vw, 32px);
+    font-style:italic;
+  }
+
+  .songs-list{
+    display:flex;
+    flex-direction:column;
+    gap:clamp(16px, 3vw, 20px);
+  }
+
+  .song-item{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:18px;
+    padding:clamp(18px, 4vw, 24px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+    transition:all .3s ease;
+  }
+
+  .song-item:hover{
+    transform:translateX(6px);
+    border-color:var(--orange);
+    box-shadow:0 6px 28px rgba(255,122,26,.3);
+  }
+
+  .song-header{
+    margin-bottom:12px;
+  }
+
+  .song-title{
+    font-size:clamp(1.05rem, 3vw, 1.2rem);
+    font-weight:700;
+    color:var(--orange-soft);
+    margin-bottom:4px;
+  }
+
+  .song-artist{
+    font-size:clamp(.85rem, 2vw, .95rem);
+    color:#9a8d7d;
+    font-weight:500;
+  }
+
+  .song-memory{
+    font-size:clamp(.88rem, 2.5vw, .98rem);
+    color:#d4cec3;
+    line-height:1.65;
+    font-style:italic;
+  }
+
+  /* FUTURE PAGE */
+  .future-section{
+    display:flex;
+    flex-direction:column;
+    gap:clamp(28px, 6vw, 40px);
+    margin-bottom:clamp(40px, 8vw, 60px);
+    position:relative;
+    z-index:1;
+  }
+
+  .future-card{
+    background:linear-gradient(160deg, rgba(28,21,15,.9), rgba(21,21,23,.9));
+    border:1px solid rgba(255,122,26,.25);
+    border-radius:24px;
+    padding:clamp(24px, 5vw, 36px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.4);
+    transition:all .3s ease;
+  }
+
+  .future-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 40px rgba(255,122,26,.25);
+  }
+
+  .future-card-title{
+    font-size:clamp(1.3rem, 4vw, 1.6rem);
+    font-weight:700;
+    color:var(--orange-soft);
+    margin-bottom:clamp(20px, 5vw, 28px);
+    text-align:center;
+    letter-spacing:1px;
+  }
+
+  .future-checklist{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(12px, 3vw, 16px);
+  }
+
+  .future-item{
+    position:relative;
+  }
+
+  .future-checkbox{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    cursor:pointer;
+    padding:clamp(12px, 3vw, 16px);
+    border-radius:12px;
+    transition:all .3s ease;
+    background:rgba(0,0,0,.2);
+    border:1px solid transparent;
+  }
+
+  .future-checkbox:hover{
+    background:rgba(255,122,26,.08);
+    border-color:rgba(255,122,26,.2);
+  }
+
+  .future-checkbox input[type="checkbox"]{
+    position:absolute;
+    opacity:0;
+    cursor:pointer;
+  }
+
+  .checkmark{
+    position:relative;
+    width:22px;
+    height:22px;
+    min-width:22px;
+    border:2px solid rgba(255,122,26,.4);
+    border-radius:6px;
+    background:rgba(0,0,0,.3);
+    transition:all .3s ease;
+  }
+
+  .future-checkbox:hover .checkmark{
+    border-color:var(--orange);
+  }
+
+  .future-checkbox input[type="checkbox"]:checked ~ .checkmark{
+    background:var(--orange);
+    border-color:var(--orange);
+  }
+
+  .checkmark::after{
+    content:"";
+    position:absolute;
+    display:none;
+    left:6px;
+    top:2px;
+    width:5px;
+    height:10px;
+    border:solid var(--black);
+    border-width:0 3px 3px 0;
+    transform:rotate(45deg);
+  }
+
+  .future-checkbox input[type="checkbox"]:checked ~ .checkmark::after{
+    display:block;
+  }
+
+  .future-text{
+    font-size:clamp(.92rem, 2.5vw, 1.05rem);
+    color:var(--white);
+    line-height:1.6;
+    flex:1;
+  }
+
+  .future-checkbox input[type="checkbox"]:checked ~ .future-text{
+    text-decoration:line-through;
+    opacity:.6;
+  }
+
+  /* FANS PAGE */
+  .fans-grid{
+    display:flex;
+    flex-direction:column;
+    gap:clamp(28px, 6vw, 40px);
+    margin-bottom:clamp(40px, 8vw, 60px);
+    position:relative;
+    z-index:1;
+  }
+
+  .fan-card{
+    background:linear-gradient(160deg, rgba(28,21,15,.95), rgba(21,21,23,.95));
+    border:2px solid rgba(255,122,26,.3);
+    border-radius:24px;
+    padding:clamp(24px, 5vw, 32px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.5);
+    transition:all .3s ease;
+  }
+
+  .fan-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--orange);
+    box-shadow:0 12px 40px rgba(255,122,26,.35);
+  }
+
+  .fan-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:24px;
+    padding-bottom:20px;
+    border-bottom:2px solid rgba(255,122,26,.2);
+  }
+
+  .fan-avatar{
+    width:clamp(60px, 14vw, 70px);
+    height:clamp(60px, 14vw, 70px);
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--orange), var(--orange-soft));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(1.8rem, 6vw, 2.2rem);
+    flex-shrink:0;
+    box-shadow:0 6px 16px rgba(255,122,26,.4);
+    border:3px solid rgba(255,255,255,.1);
+  }
+
+  .fan-info{
+    flex:1;
+  }
+
+  .fan-name{
+    font-size:clamp(1.3rem, 4vw, 1.6rem);
+    font-weight:700;
+    color:var(--orange-soft);
+    margin-bottom:6px;
+    letter-spacing:.5px;
+  }
+
+  .fan-date{
+    font-size:clamp(.9rem, 2.5vw, 1rem);
+    color:#b8b0a4;
+    font-weight:500;
+  }
+
+  /* Video Container */
+  .fan-video-container{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 6px 24px rgba(0,0,0,.4);
+    background:#000;
+  }
+
+  .fan-video-container video{
+    width:100%;
+    display:block;
+    border-radius:16px;
+    background:#000;
+  }
+
+  .video-author{
+    position:absolute;
+    bottom:16px;
+    right:16px;
+    background:linear-gradient(135deg, rgba(255,122,26,.95), rgba(255,140,0,.95));
+    color:#000;
+    padding:10px 20px;
+    border-radius:24px;
+    font-size:clamp(.95rem, 2.5vw, 1.1rem);
+    font-weight:700;
+    box-shadow:0 4px 12px rgba(0,0,0,.6);
+    backdrop-filter:blur(8px);
+    border:2px solid rgba(255,255,255,.2);
+  }
+
+  /* Message Container */
+  .fan-message-container{
+    position:relative;
+    background:linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.2));
+    border:2px solid rgba(255,122,26,.25);
+    border-radius:16px;
+    padding:clamp(20px, 5vw, 28px);
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.3);
+  }
+
+  .fan-message-content{
+    margin-bottom:16px;
+  }
+
+  .fan-message-content p{
+    font-size:clamp(1rem, 2.8vw, 1.1rem);
+    color:var(--white);
+    line-height:1.8;
+    margin-bottom:16px;
+    text-align:justify;
+  }
+
+  .fan-message-content p:last-child{
+    margin-bottom:0;
+  }
+
+  .message-author{
+    display:inline-block;
+    background:linear-gradient(135deg, var(--orange), var(--orange-soft));
+    color:#000;
+    padding:10px 20px;
+    border-radius:24px;
+    font-size:clamp(.95rem, 2.5vw, 1.1rem);
+    font-weight:700;
+    box-shadow:0 4px 12px rgba(255,122,26,.4);
+    border:2px solid rgba(255,255,255,.1);
+    float:right;
+  }
+
+  /* PLANS PAGE */
+  .plans-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(20px, 4vw, 30px);
+    margin-bottom:clamp(30px, 6vw, 40px);
+    position:relative;
+    z-index:1;
+  }
+
+  .plan-column{
+    background:linear-gradient(160deg, rgba(28,21,15,.95), rgba(21,21,23,.95));
+    border:2px solid rgba(255,122,26,.3);
+    border-radius:24px;
+    padding:clamp(24px, 5vw, 32px);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 32px rgba(0,0,0,.5);
+    transition:all .3s ease;
+  }
+
+  .plan-column:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 40px rgba(255,122,26,.3);
+  }
+
+  .plan-column h2{
+    text-align:center;
+    color:var(--orange-soft);
+    font-size:clamp(1.6rem, 4vw, 2rem);
+    margin-bottom:clamp(24px, 5vw, 32px);
+    padding-bottom:clamp(12px, 3vw, 16px);
+    border-bottom:3px solid var(--orange);
+    letter-spacing:1px;
+  }
+
+  .goals-section{
+    margin-bottom:clamp(24px, 5vw, 32px);
+  }
+
+  .goal-item{
+    display:flex;
+    align-items:center;
+    padding:clamp(12px, 3vw, 16px);
+    margin-bottom:clamp(10px, 2vw, 14px);
+    background:rgba(0,0,0,.2);
+    border-radius:12px;
+    transition:all .3s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+
+  .goal-item:hover{
+    background:rgba(255,122,26,.08);
+    border-color:rgba(255,122,26,.2);
+    transform:translateX(4px);
+  }
+
+  .goal-item.main-goal{
+    font-size:clamp(.95rem, 2.5vw, 1.1rem);
+    font-weight:600;
+    color:var(--orange-soft);
+    background:rgba(255,122,26,.1);
+    border-left:4px solid var(--orange);
+    margin-bottom:clamp(12px, 3vw, 16px);
+    position:relative;
+  }
+
+  .main-goals-divider{
+    height:2px;
+    background:linear-gradient(to right, var(--orange), transparent);
+    margin:clamp(20px, 4vw, 28px) 0;
+    border-radius:2px;
+  }
+
+  .goal-item.bonus-goal{
+    font-size:clamp(.85rem, 2vw, .95rem);
+    color:#d4cec3;
+  }
+
+  .checkbox{
+    width:clamp(20px, 5vw, 24px);
+    height:clamp(20px, 5vw, 24px);
+    min-width:clamp(20px, 5vw, 24px);
+    border:2px solid var(--orange);
+    border-radius:6px;
+    margin-right:clamp(12px, 3vw, 16px);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all .3s ease;
+    background:rgba(0,0,0,.3);
+  }
+
+  .goal-item:hover .checkbox{
+    border-color:var(--orange-soft);
+  }
+
+  .goal-item.completed .checkbox{
+    background:var(--orange);
+    border-color:var(--orange);
+  }
+
+  .goal-item.completed .checkbox::after{
+    content:'✓';
+    color:var(--black);
+    font-weight:bold;
+    font-size:clamp(14px, 3vw, 16px);
+  }
+
+  .goal-item.completed{
+    opacity:.6;
+    text-decoration:line-through;
+  }
+
+  .weeks-container{
+    display:flex;
+    gap:clamp(10px, 2vw, 16px);
+    justify-content:center;
+    padding-top:clamp(16px, 4vw, 24px);
+    border-top:2px solid rgba(255,122,26,.2);
+  }
+
+  .week-button{
+    flex:1;
+    padding:clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px);
+    background:linear-gradient(135deg, var(--orange), var(--orange-soft));
+    color:var(--black);
+    border:none;
+    border-radius:12px;
+    font-size:clamp(.9rem, 2.5vw, 1.05rem);
+    font-weight:700;
+    cursor:pointer;
+    transition:all .3s ease;
+    box-shadow:0 4px 12px rgba(255,122,26,.3);
+  }
+
+  .week-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 16px rgba(255,122,26,.5);
+  }
+
+  .week-button.active{
+    background:linear-gradient(135deg, #4caf50, #45a049);
+  }
+
+  .plan-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    animation:fadeIn .3s ease;
+    backdrop-filter:blur(4px);
+  }
+
+  .plan-modal.show{
+    display:flex;
+  }
+
+  .plan-modal-content{
+    background:linear-gradient(160deg, rgba(28,21,15,.98), rgba(21,21,23,.98));
+    border:2px solid var(--orange);
+    border-radius:24px;
+    padding:clamp(32px, 6vw, 48px);
+    max-width:600px;
+    width:90%;
+    max-height:80vh;
+    overflow-y:auto;
+    box-shadow:0 20px 60px rgba(0,0,0,.8);
+    position:relative;
+  }
+
+  .plan-modal-header{
+    text-align:center;
+    margin-bottom:clamp(24px, 5vw, 32px);
+    padding-bottom:clamp(16px, 4vw, 20px);
+    border-bottom:2px solid rgba(255,122,26,.3);
+  }
+
+  .plan-modal-header h3{
+    color:var(--orange-soft);
+    font-size:clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom:8px;
+    letter-spacing:1px;
+  }
+
+  .plan-modal-header p{
+    color:#b8b0a4;
+    font-size:clamp(.9rem, 2vw, 1rem);
+  }
+
+  .plan-modal-goals{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:clamp(10px, 2vw, 14px);
+  }
+
+  .plan-modal-goal-item{
+    padding:clamp(14px, 3vw, 18px);
+    background:rgba(0,0,0,.3);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    cursor:pointer;
+    transition:all .3s ease;
+    border:1px solid transparent;
+  }
+
+  .plan-modal-goal-item:hover{
+    background:rgba(255,122,26,.08);
+    border-color:rgba(255,122,26,.2);
+  }
+
+  .plan-modal-goal-item.completed{
+    background:rgba(76,175,80,.15);
+    border-color:rgba(76,175,80,.3);
+  }
+
+  .close-plan-modal{
+    background:var(--orange);
+    color:var(--black);
+    border:none;
+    padding:clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
+    border-radius:12px;
+    font-size:clamp(.95rem, 2vw, 1.05rem);
+    cursor:pointer;
+    margin-top:clamp(20px, 4vw, 28px);
+    width:100%;
+    font-weight:700;
+    transition:all .3s ease;
+  }
+
+  .close-plan-modal:hover{
+    background:var(--orange-soft);
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px rgba(255,122,26,.4);
+  }
+
+  @media (max-width: 768px) {
+    .plans-wrapper{
+      grid-template-columns:1fr;
+    }
+  }
+
+  /* RESPONSIVE IMPROVEMENTS */
+  @media (max-width: 640px) {
+    body{
+      padding-bottom:60px;
+    }
+    
+    .timeline{
+      padding-left:20px;
+    }
+    
+    .timeline::before{
+      left:6px;
+    }
+    
+    .tl-item::before{
+      left:-18px;
+      width:12px;
+      height:12px;
+    }
+    
+    .stats{
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    .sidebar{
+      width:280px;
+      left:-280px;
+    }
+
+    .gallery-grid{
+      grid-template-columns:repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+      gap:12px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next{
+      width:40px;
+      height:40px;
+      font-size:1.5rem;
+    }
+
+    .lightbox-prev{
+      left:10px;
+    }
+
+    .lightbox-next{
+      right:10px;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .gallery-grid{
+      grid-template-columns:repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+    }
+  }
+
+  /* SMOOTH SCROLL */
+  html{
+    scroll-behavior:smooth;
+  }
+
+  /* LOADING ANIMATION */
+  @keyframes fadeIn{
+    from{
+      opacity:0;
+    }
+    to{
+      opacity:1;
+    }
+  }
+  
+  .wrap > *{
+    animation:fadeIn .6s ease-out both;
+  }
+  
+  .stats{
+    animation-delay:.1s;
+  }
+  
+  .baby-box{
+    animation-delay:.2s;
+  }
+  
+  .timeline{
+    animation-delay:.3s;
+  }
+</style>
+</head>
+<body>
+
+<!-- HAMBURGER MENU BUTTON -->
+<button class="hamburger-btn" id="hamburgerBtn" aria-label="Menüyü aç">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<!-- SIDEBAR MENU -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h3>Menü</h3>
+    <button class="close-btn" id="closeBtn" aria-label="Menüyü kapat">✕</button>
+  </div>
+  <nav class="sidebar-nav">
+    <ul>
+      <li><a href="#" data-page="home" class="nav-link active">🏠 Ana Sayfa</a></li>
+      <li><a href="#" data-page="memories" class="nav-link">📸 Anılar</a></li>
+      <li><a href="#" data-page="movies" class="nav-link">🎬 İzlediğimiz Filmler</a></li>
+      <li><a href="#" data-page="music" class="nav-link">🎵 Şarkılarımız</a></li>
+      <li><a href="#" data-page="fans" class="nav-link">💝 Fanlar</a></li>
+      <li><a href="#" data-page="future" class="nav-link">🔮 Gelecek</a></li>
+      <li><a href="#" data-page="plans" class="nav-link">🎯 Planlar</a></li>
+      <!-- Yeni menü öğelerini buraya ekleyebilirsin -->
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Senin için ❤️</p>
+  </div>
+</aside>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="wrap" id="homePage">
+
+  <header>
+    <div class="badge">Bugün Senin Günün</div>
+    <div class="main-title">Hoşgeldin</div>
+    <h1 class="name">Senam 🧡</h1>
+    <p>Seninle geçen her gün için bir sebep bulduk 🖤</p>
+    <div class="hr-deco"></div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-label">Beraber Olduğumuzdan Beri</div>
+      <div class="live-time" id="liveTogether"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Manita Olduğumuzdan Beri</div>
+      <div class="live-time" id="liveManit"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Yıl Dönümüne Kalan</div>
+      <div class="live-time" id="liveAnniversary"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">O Büyülü Güne Kalan</div>
+      <div class="live-time" id="liveMagicDay"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Doğum Gününe Kalan</div>
+      <div class="live-time" id="liveCountdown"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Kaçıncı Yaşına Giriyor</div>
+      <div class="simple-num" id="ageTurning">0</div>
+    </div>
+  </div>
+
+  <div class="baby-box">
+    <div class="tl-date">15 AĞUSTOS 2006</div>
+    <div class="baby-title">Sena'nın Küçüklüğü 🍼</div>
+    <div class="tl-text">Bebeğim büyüyorrr...</div>
+    <div class="baby-photo-slot">
+      <img src="ana menğ/küçüklük.jpeg" alt="Sena'nın çocukluğu" loading="lazy">
+    </div>
+  </div>
+
+  <div class="daily-note-box">
+    <h2 class="section-title">Günün Notu 📝</h2>
+    <div class="note-display">
+      <div class="note-date" id="noteDate">Yükleniyor...</div>
+      <p class="note-text" id="noteText">Bugün senin için özel bir notum var...</p>
+    </div>
+    <div class="note-footer">
+      <span class="note-icon">💌</span>
+      <span class="note-info">Her gün kontrol et ❤️</span>
+    </div>
+  </div>
+
+  <div class="daily-photo-box">
+    <h2 class="section-title">Günün Resmi 📸</h2>
+    <div class="daily-photo-container">
+      <div class="daily-photo-frame" id="dailyPhotoFrame">
+        <div class="daily-photo-placeholder">
+          <span class="daily-photo-icon">📷</span>
+          <p>Fotoğraflar yükleniyor...</p>
+        </div>
+        <!-- Günün fotoğrafı buraya gelecek -->
+        <img id="dailyPhoto" src="" alt="Günün Fotoğrafı" style="display:none;">
+      </div>
+      <div class="daily-photo-caption" id="dailyPhotoCaption">
+        <span class="caption-date" id="captionDate"></span>
+        <p class="caption-text" id="captionText">Günün özel anısı</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="love-reasons-box">
+    <h2 class="section-title">Seni Seviyorum Çünkü... 💕</h2>
+    <div class="reason-display" id="reasonDisplay">
+      <p class="reason-text" id="reasonText">Butona tıkla, neden seni sevdiğimi öğren 🧡</p>
+    </div>
+    <button class="reason-btn" id="reasonBtn" aria-label="Yeni sebep göster">
+      <span>Yeni Sebep Göster</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="video-message-box">
+    <h2 class="section-title">Sana Özel Mesajım 🎥</h2>
+    <div class="video-container">
+      <video id="specialVideo" controls controlsList="nodownload" preload="metadata" poster="">
+        <source src="video/WhatsApp Video 2026-08-14 at 13.02.42.mp4" type="video/mp4">
+        Tarayıcın video formatını desteklemiyor.
+      </video>
+      <div class="video-placeholder" id="videoPlaceholder">
+        <div class="placeholder-icon">🎬</div>
+        <p>Video yükleniyor...</p>
+        <small>İlk oynatmada biraz bekleyebilir</small>
+      </div>
+    </div>
+    <p class="video-note">� <strong>Senin için özel:</strong> Bu videoyu izlemeyi unutma!</p>
+  </div>
+
+  <footer>
+    Bu sayfa <span>senin için</span> özel olarak kodlandı 🖤🧡
+  </footer>
+</div>
+
+<!-- MEMORIES PAGE -->
+<div class="page-container" id="memoriesPage" style="display:none;">
+  <div class="wrap">
+    <header class="page-header">
+      <h1 class="page-title">Anılarımız 📸</h1>
+      <p class="page-subtitle">Seninle yaşadığımız özel anlar</p>
+      <div class="hr-deco"></div>
+    </header>
+
+    <div class="gallery-grid">
+      <!-- Anılar klasöründeki 38 fotoğraf -->
+      <div class="gallery-item" data-index="0">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.40 (1).jpeg" alt="Anı 1" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="1">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.40 (2).jpeg" alt="Anı 2" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="2">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.40.jpeg" alt="Anı 3" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="3">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.41 (1).jpeg" alt="Anı 4" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="4">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.41.jpeg" alt="Anı 5" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="5">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.42 (1).jpeg" alt="Anı 6" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="6">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.42 (2).jpeg" alt="Anı 7" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="7">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.43.jpeg" alt="Anı 8" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="8">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.44.jpeg" alt="Anı 9" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="9">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.52.jpeg" alt="Anı 10" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="10">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.53 (1).jpeg" alt="Anı 11" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="11">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.53 (2).jpeg" alt="Anı 12" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="12">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.53.jpeg" alt="Anı 13" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="13">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.54 (1).jpeg" alt="Anı 14" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="14">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.54 (2).jpeg" alt="Anı 15" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="15">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.54 (3).jpeg" alt="Anı 16" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="16">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.30.54.jpeg" alt="Anı 17" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="17">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.17.jpeg" alt="Anı 18" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="18">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.18.jpeg" alt="Anı 19" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="19">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.19 (1).jpeg" alt="Anı 20" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="20">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.19 (2).jpeg" alt="Anı 21" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="21">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.19.jpeg" alt="Anı 22" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="22">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.20.jpeg" alt="Anı 23" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="23">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.22 (1).jpeg" alt="Anı 24" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="24">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.22 (2).jpeg" alt="Anı 25" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="25">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.22.jpeg" alt="Anı 26" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="26">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.23.jpeg" alt="Anı 27" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="27">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.24 (1).jpeg" alt="Anı 28" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="28">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.24.jpeg" alt="Anı 29" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="29">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.25 (1).jpeg" alt="Anı 30" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="30">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.25.jpeg" alt="Anı 31" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="31">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.26 (1).jpeg" alt="Anı 32" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="32">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.26 (2).jpeg" alt="Anı 33" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="33">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.26 (3).jpeg" alt="Anı 34" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="34">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.26.jpeg" alt="Anı 35" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="35">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.27 (1).jpeg" alt="Anı 36" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="36">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.27 (2).jpeg" alt="Anı 37" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="37">
+        <img src="anılar/WhatsApp Image 2026-08-14 at 03.58.27.jpeg" alt="Anı 38" loading="lazy">
+      </div>
+    </div>
+
+    <footer style="margin-top:60px;">
+      Daha birçok güzel anı biriktireceğiz 💕
+    </footer>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <button class="lightbox-prev" id="lightboxPrev">‹</button>
+  <button class="lightbox-next" id="lightboxNext">›</button>
+  <img src="" alt="" id="lightboxImg">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- MOVIES PAGE -->
+<div class="page-container" id="moviesPage" style="display:none;">
+  <div class="wrap">
+    <header class="page-header">
+      <h1 class="page-title">İzlediğimiz Filmler 🎬</h1>
+      <p class="page-subtitle">Birlikte izlediğimiz filmler ve anılar</p>
+      <div class="hr-deco"></div>
+    </header>
+
+    <div class="movies-grid">
+      <!-- Her film kartı için bu yapıyı kopyala-yapıştır yaparak yeni filmler ekleyebilirsin -->
+      
+      <div class="movie-card">
+        <div class="movie-poster">
+          <!-- Afiş görseli eklemek için: <img src="poster1.jpg" alt="Film Adı" loading="lazy"> -->
+          <div class="movie-poster-placeholder">
+            <span class="movie-icon">🎬</span>
+          </div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">Film Adı Buraya</h3>
+          <p class="movie-date">📅 Tarih: 01.01.2024</p>
+          <p class="movie-note">Buraya filmle ilgili notunuzu, nerede izlediğinizi, nasıl hissettinizi yazın...</p>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <div class="movie-poster">
+          <div class="movie-poster-placeholder">
+            <span class="movie-icon">🎬</span>
+          </div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">Film Adı Buraya</h3>
+          <p class="movie-date">📅 Tarih: 01.01.2024</p>
+          <p class="movie-note">Buraya filmle ilgili notunuzu yazın...</p>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <div class="movie-poster">
+          <div class="movie-poster-placeholder">
+            <span class="movie-icon">🎬</span>
+          </div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">Film Adı Buraya</h3>
+          <p class="movie-date">📅 Tarih: 01.01.2024</p>
+          <p class="movie-note">Buraya filmle ilgili notunuzu yazın...</p>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <div class="movie-poster">
+          <div class="movie-poster-placeholder">
+            <span class="movie-icon">🎬</span>
+          </div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">Film Adı Buraya</h3>
+          <p class="movie-date">📅 Tarih: 01.01.2024</p>
+          <p class="movie-note">Buraya filmle ilgili notunuzu yazın...</p>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <div class="movie-poster">
+          <div class="movie-poster-placeholder">
+            <span class="movie-icon">🎬</span>
+          </div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">Film Adı Buraya</h3>
+          <p class="movie-date">📅 Tarih: 01.01.2024</p>
+          <p class="movie-note">Buraya filmle ilgili notunuzu yazın...</p>
+        </div>
+      </div>
+
+      <div class="movie-card">
+        <div class="movie-poster">
+          <div class="movie-poster-placeholder">
+            <span class="movie-icon">🎬</span>
+          </div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">Film Adı Buraya</h3>
+          <p class="movie-date">📅 Tarih: 01.01.2024</p>
+          <p class="movie-note">Buraya filmle ilgili notunuzu yazın...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer style="margin-top:60px;">
+      Daha nice filmler birlikte izleyeceğiz 🍿
+    </footer>
+  </div>
+</div>
+
+<!-- MUSIC PAGE -->
+<div class="page-container" id="musicPage" style="display:none;">
+  <div class="wrap">
+    <header class="page-header">
+      <h1 class="page-title">Şarkılarımız 🎵</h1>
+      <p class="page-subtitle">Bizi birbirimize bağlayan melodiler</p>
+      <div class="hr-deco"></div>
+    </header>
+
+    <!-- Spotify Playlist Embed Area -->
+    <div class="playlist-container">
+      <h2 class="section-title">Bizim Playlist 🎧</h2>
+      
+      <!-- Spotify Playlist Embed -->
+      <iframe 
+        style="border-radius:12px; box-shadow: 0 8px 24px rgba(255,140,0,0.15);" 
+        src="https://open.spotify.com/embed/playlist/6ICliGXY8RblQleBqxHQUU?utm_source=generator" 
+        width="100%" 
+        height="420" 
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- Special Songs List -->
+    <div class="songs-section">
+      <h2 class="section-title">Günün Şarkıları 💕</h2>
+      <p class="section-desc">Her gün 5 farklı şarkı...</p>
+
+      <div class="songs-list" id="dailySongsList">
+        <!-- Günlük şarkılar JavaScript ile buraya yüklenecek -->
+      </div>
+    </div>
+
+    <footer style="margin-top:60px;">
+      Müziğimiz hiç bitmesin 🎶
+    </footer>
+  </div>
+</div>
+
+<!-- FUTURE PAGE -->
+<div class="page-container" id="futurePage" style="display:none;">
+  <div class="wrap">
+    <header class="page-header">
+      <h1 class="page-title">Geleceğimiz 🔮</h1>
+      <p class="page-subtitle">Birlikte kuracağımız hayaller</p>
+      <div class="hr-deco"></div>
+    </header>
+
+    <div class="future-section">
+      
+      <!-- Bu Yılki Planlar -->
+      <div class="future-card">
+        <h2 class="future-card-title">📅 Bu Yılki Planlarımız</h2>
+        <ul class="future-checklist">
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Eve çıkmak 🏠</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">İşe girmek 💼</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Galatasaray maçına gitmek ⚽</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Yurtdışı gezisi ✈️</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Sinemada sabahlamaca 🎬🌙</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Adalarda tatil ⛵🌊</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 5 Yıl Sonra -->
+      <div class="future-card">
+        <h2 class="future-card-title">🌟 5 Yıl Sonra</h2>
+        <ul class="future-checklist">
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">İş hayatında başarılı olmak 💼📈</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Araba sahibi olmak 🚗</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Evde yaşıyor olmak 🏡</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 10 Yıl Sonra -->
+      <div class="future-card">
+        <h2 class="future-card-title">🚀 10 Yıl Sonra</h2>
+        <ul class="future-checklist">
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Villamızın olması 🏰🌴</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Arabalarımızın olması 🚗🚙</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Evlenmiş olmak 💍👰🤵</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Dünyanın yarısını gezmek 🌍✈️</span>
+            </label>
+          </li>
+          <li class="future-item">
+            <label class="future-checkbox">
+              <input type="checkbox">
+              <span class="checkmark"></span>
+              <span class="future-text">Çocuğumuzun olması 👶💕</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer style="margin-top:60px;">
+      Gelecek seninle çok daha güzel 💫
+    </footer>
+  </div>
+</div>
+
+<!-- FANS PAGE -->
+<div class="page-container" id="fansPage" style="display:none;">
+  <div class="wrap">
+    <header class="page-header">
+      <h1 class="page-title">Fanlar 💝</h1>
+      <p class="page-subtitle">Arkadaşlarından sana özel mesajlar ve videolar</p>
+      <div class="hr-deco"></div>
+    </header>
+
+    <div class="fans-grid">
+      
+      <!-- CEYDA -->
+      <div class="fan-card">
+        <div class="fan-header">
+          <div class="fan-avatar">�</div>
+          <div class="fan-info">
+            <h3 class="fan-name">Ceyda</h3>
+            <p class="fan-date">📅 14 Ağustos 2026</p>
+          </div>
+        </div>
+        
+        <div class="fan-video-container">
+          <video controls preload="metadata">
+            <source src="fanlar/videolar/ceyda/WhatsApp Video 2026-08-14 at 20.57.33.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- EBRU -->
+      <div class="fan-card">
+        <div class="fan-header">
+          <div class="fan-avatar">👩</div>
+          <div class="fan-info">
+            <h3 class="fan-name">Ebru</h3>
+            <p class="fan-date">📅 14 Ağustos 2026</p>
+          </div>
+        </div>
+        
+        <div class="fan-video-container">
+          <video controls preload="metadata">
+            <source src="fanlar/videolar/ebru/WhatsApp Video 2026-08-14 at 20.57.39.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- HELİN -->
+      <div class="fan-card">
+        <div class="fan-header">
+          <div class="fan-avatar">�</div>
+          <div class="fan-info">
+            <h3 class="fan-name">Helin</h3>
+            <p class="fan-date">📅 14 Ağustos 2026</p>
+          </div>
+        </div>
+        
+        <div class="fan-video-container">
+          <video controls preload="metadata">
+            <source src="fanlar/videolar/helin/WhatsApp Video 2026-08-14 at 22.47.52.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- ROZERİN -->
+      <div class="fan-card">
+        <div class="fan-header">
+          <div class="fan-avatar">👩</div>
+          <div class="fan-info">
+            <h3 class="fan-name">Rozerin</h3>
+            <p class="fan-date">📅 14 Ağustos 2026</p>
+          </div>
+        </div>
+        
+        <div class="fan-video-container">
+          <video controls preload="metadata">
+            <source src="fanlar/videolar/rozerin/WhatsApp Video 2026-08-14 at 23.16.22.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- BETÜL (Sadece Mesaj) -->
+      <div class="fan-card">
+        <div class="fan-header">
+          <div class="fan-avatar">�</div>
+          <div class="fan-info">
+            <h3 class="fan-name">Betül</h3>
+            <p class="fan-date">📅 14 Ağustos 2026</p>
+          </div>
+        </div>
+        
+        <div class="fan-message-container">
+          <div class="fan-message-content">
+            <p>nursenam aslında sana video çekmek istiyordum ama uzun yoldan dönüyorum ve sanırım video yetişmeyecek o yüzden yolda sana yazmak istiyorum😔</p>
+            <p>İYİ Kİ DOĞDUN KIZIL FIRTINA iyi ki varsın! hayat karşına hep güzellikler çıkarsın (senin gibi😉😚)</p>
+            <p>senin betüs perin🧚🏻 olduğum için çok mutluyum seni çok seviyorum nuriş senle metroda sohbetlerimizi güven veren sıcaklığını, yargılamayan bakışlarını, anlamaya çalışan kalbini, kendi sırabı beklemeden tüm dikkatinle beni dinlemeni çok seviyorum.</p>
+            <p>beraber büyüdüğümüz beraber öğrendiğimiz nice senelerimiz olsun. Olur da hayat sana zorluklar çıkarırsa karşısında çok güçlü koca yürekli yapamayacağı iş olmayan bir kızla karşılacağını bilsin.</p>
+            <p>Güzellikler seninle olsun balım mutlu yıllar 🎈🎂</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAZLICAN (Sadece Mesaj) -->
+      <div class="fan-card">
+        <div class="fan-header">
+          <div class="fan-avatar">💌</div>
+          <div class="fan-info">
+            <h3 class="fan-name">Nazlıcan</h3>
+            <p class="fan-date">📅 14 Ağustos 2026</p>
+          </div>
+        </div>
+        
+        <div class="fan-message-container">
+          <div class="fan-message-content">
+            <p>Birtanem iyi ki doğdun iyi ki varsın SENİ ÇOK SEVİYORUM❤️❤️❤️❤️❤️❤️</p>
+            <p>inşallah çok güzel çok eğlenceli çok mutlu çok sağlıklı yılların olur inşallah her sene yaşadığın en iyi seneyi yaşarsın</p>
+            <p>iyi ki bu sene daha da yakınlaşmışız benim için inanılmaz değerlisin tüm sene senin sayende daha katlanılır oldu her sene senin daha da büyümeni kendini geliştirmeni görmek için sabırsızlanıyorum</p>
+            <p>seni aşırı özledim inşallah arkadaşlığımız uzun yıllar devam eder her zaman senin yanındayım her zaman destekçinim</p>
+            <p>tekrardan seni çok çok çok çok özledim seni çoooook seviyorum aşktanem ❤️❤️❤️💋💋💋💋💋💋</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer style="margin-top:60px;">
+      Hepiniz çok değerlisiniz 💕
+    </footer>
+  </div>
+</div>
+
+<!-- PLANS PAGE -->
+<div class="page-container" id="plansPage" style="display:none;">
+  <div class="wrap">
+    <header class="page-header">
+      <h1 class="page-title">🎯 Eylül Ayı Planı 🎯</h1>
+      <p class="page-subtitle">Birlikte başaracağımız hedefler</p>
+    </header>
+
+    <div class="plans-wrapper">
+      <!-- SENA'NIN PLANLARI -->
+      <div class="plan-column">
+        <h2>💜 Sena</h2>
+        <div class="goals-section">
+          <!-- Ana hedefler -->
+          <div class="goal-item main-goal" data-goal-id="sena-1" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Haftada 4 gün minimum 45 dk hareket et</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="sena-2" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Her hafta 100 sayfa kitap + 2 film bitir</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="sena-3" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Her hafta 2 yeni konu araştır; ayda 1 tanesini derinleştir</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="sena-4" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Haftada 1 tıp makalesi oku ve kendi düşünceni yaz</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="sena-5" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Her ay kendin için 2 yeni deneyim yap: self-date, yeni yer, kurs, tenis, müze, etkinlik vb.</span>
+          </div>
+
+          <div class="main-goals-divider"></div>
+
+          <!-- Çerez görevler -->
+          <div class="goal-item bonus-goal" data-goal-id="sena-6" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Haftada 3 kez 10-20 dk meditasyon</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-7" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Ayda 2 self-date + 1 yeni yer keşfet</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-8" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Haftada 1 yeni kombin dene</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-9" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Uyumadan önce 10-15 dk telefonsuz kal</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-10" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Her pazar gelecek haftanın 3 ana önceliğini belirle</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-11" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Arkadaşlarla kaliteli zaman geçir</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-12" data-person="sena">
+            <div class="checkbox"></div>
+            <span>1 müze / sergi / tiyatro / workshop</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="sena-13" data-person="sena">
+            <div class="checkbox"></div>
+            <span>Yoga ve ukulele için uygun ortam bul</span>
+          </div>
+        </div>
+
+        <div class="weeks-container">
+          <button class="week-button" data-week="1" data-person="sena">Hafta 1</button>
+          <button class="week-button" data-week="2" data-person="sena">Hafta 2</button>
+          <button class="week-button" data-week="3" data-person="sena">Hafta 3</button>
+          <button class="week-button" data-week="4" data-person="sena">Hafta 4</button>
+        </div>
+      </div>
+
+      <!-- DAVUT'UN PLANLARI -->
+      <div class="plan-column">
+        <h2>💙 Davut</h2>
+        <div class="goals-section">
+          <!-- Ana hedefler -->
+          <div class="goal-item main-goal" data-goal-id="davut-1" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Haftada 4 gün minimum 45 dk egzersiz yap</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="davut-2" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Haftada min 5 gün İngilizce B1-B2 çalış</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="davut-3" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Ayda minimum 30 video editleyip YouTube'a yükle (haftada ~7-8 video)</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="davut-4" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Her hafta ne olursa olsun minimum 1.000₺ kenara koy</span>
+          </div>
+          <div class="goal-item main-goal" data-goal-id="davut-5" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Haftada en az 70 sayfa kitap oku</span>
+          </div>
+
+          <div class="main-goals-divider"></div>
+
+          <!-- Çerez görevler -->
+          <div class="goal-item bonus-goal" data-goal-id="davut-6" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Shopify ile ürün koy, Meta reklamlarını çık</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-7" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Ayda 10 film izle</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-8" data-person="davut">
+            <div class="checkbox"></div>
+            <span>1 dizinin 1-2 sezonunu bitir</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-9" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Aylık ortalama 7.000 adımın olsun</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-10" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Her gün min 4 max 6 saat uyu</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-11" data-person="davut">
+            <div class="checkbox"></div>
+            <span>Gelir giderlerini bütün ay not al</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-12" data-person="davut">
+            <div class="checkbox"></div>
+            <span>5 İngilizce makale oku</span>
+          </div>
+          <div class="goal-item bonus-goal" data-goal-id="davut-13" data-person="davut">
+            <div class="checkbox"></div>
+            <span>YouTube yatay video kanalı aç</span>
+          </div>
+        </div>
+
+        <div class="weeks-container">
+          <button class="week-button" data-week="1" data-person="davut">Hafta 1</button>
+          <button class="week-button" data-week="2" data-person="davut">Hafta 2</button>
+          <button class="week-button" data-week="3" data-person="davut">Hafta 3</button>
+          <button class="week-button" data-week="4" data-person="davut">Hafta 4</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="plan-modal" id="planModal">
+  <div class="plan-modal-content">
+    <div class="plan-modal-header">
+      <h3 id="planModalTitle">Hafta 1 - Ana Hedefler</h3>
+      <p id="planModalSubtitle">Tamamlanan görevleri işaretle</p>
+    </div>
+    <ul class="plan-modal-goals" id="planModalGoalsList">
+      <!-- Görevler buraya dinamik olarak eklenecek -->
+    </ul>
+    <button class="close-plan-modal" onclick="closePlanModal()">Kapat</button>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  
+  // ---- TARİHLERİ BURADAN DÜZENLEYEBİLİRSİN ----
+  // Not: Ay değeri 0-11 arası (0=Ocak, 11=Aralık)
+  const CONFIG = {
+    startDate: new Date(2023, 11, 12, 0, 0, 0, 0),    // 12.12.2023 - bizim tarihimiz
+    manitDate: new Date(2024, 1, 26, 0, 0, 0, 0),     // 26.02.2024 - manit olma tarihi
+    birthDate: new Date(2006, 7, 15, 0, 0, 0, 0),     // 15.08.2006 - doğum günü
+    birthMonth: 7,  // Ağustos (0-indexed)
+    birthDay: 15
+  };
+
+  // ---- SENİ SEVME SEBEPLERİNİ BURADAN DÜZENLEYEBİLİRSİN ----
+  const LOVE_REASONS = [
+    "Turuncum, gülüşün beni her seferinde yeniden sana aşık ediyor 🌟",
+    "Senam, varlığın bile bana huzur veriyor 💫",
+    "Bitanem, sen yokken dünya eksik kalıyor 🧡",
+    "Güzelim, gözlerine her baktığımda kendimi kaybediyorum 👀",
+    "Yarum, seninle geçirdiğim her an bir hediye 🎁",
+    "Turuncum, sabah uyandığımda aklıma ilk sen geliyorsun ☀️",
+    "Senam, senin elini tutmak bana güven veriyor 🤝",
+    "Bitanem, yanımda olman bana güç veriyor 💪",
+    "Güzelim, seninle konuşurken zaman nasıl geçiyor anlamıyorum ⏰",
+    "Yarum, sesini duymak günümü aydınlatıyor 🎵",
+    "Turuncum, bana özel hissettiriyorsun her anında 💝",
+    "Senam, sen benim en güzel sebebimsin 💕",
+    "Bitanem, seninle her şey daha kolay 🌈",
+    "Güzelim, kalbim sadece senin için atıyor 💓",
+    "Yarum, sen benim en güzel maceramısın 🗺️",
+    "Turuncum, seninle geleceği hayal etmek çok güzel 🌠",
+    "Senam, beni ben yapan şeylerden birisin 🖤",
+    "Bitanem, seninle her gün daha mutluyum 😊",
+    "Güzelim, varlığın hayatıma anlam katıyor ✨",
+    "Yarum, seninle olmak benim doğal halim 🌿",
+    "Turuncum, sen benim en güzel şansımsın 🍀",
+    "Senam, saçlarının kokusunu özlüyorum 🌸",
+    "Bitanem, seninle sessizlik bile güzel 🤫",
+    "Güzelim, gülüşün bütün dertlerimi unutturuyor 😄",
+    "Yarum, sen benim kalbimin anahtarısın 🔑",
+    "Turuncum, seninle dans etmek istiyorum 💃",
+    "Senam, yanında kendim olabiliyorum 🦋",
+    "Bitanem, sen benim en güzel hayalimsin 💭",
+    "Güzelim, seninle her an özel bir an 🎊",
+    "Yarum, beni bu kadar mutlu eden tek şey sensin 🎈",
+    "Turuncum, seninle uyumak en güzel hissettiriyor 😴",
+    "Senam, sen benim en değerlimsin 💎",
+    "Bitanem, seninle yaşlanmak istiyorum 👴👵",
+    "Güzelim, her günümü seninle paylaşmak istiyorum 📅",
+    "Yarum, sen benim en güzel rüyamsın 🌙",
+    "Turuncum, seninle kahve içmek bana huzur veriyor ☕",
+    "Senam, elini tutmak beni güvende hissettiriyor 🤗",
+    "Bitanem, seninle yağmur altında yürümek istiyorum 🌧️",
+    "Güzelim, sen benim en güzel ilhamımsın 🎨",
+    "Yarum, seninle her şey mümkün gibi 🚀",
+    "Turuncum, gözlerin bana bakınca kalp atışlarım hızlanıyor 💗",
+    "Senam, sen benim en güzel şarkımsın 🎶",
+    "Bitanem, seninle her yer cennet 🌴",
+    "Güzelim, sen benim en güzel tutkumsun 🔥",
+    "Yarum, seninle gülmek en sevdiğim şey 😂",
+    "Turuncum, sen benim kalbimin tamamısın 💖",
+    "Senam, seninle zaman dursa keşke ⏸️",
+    "Bitanem, sen benim en güzel sığınağımsın 🏠",
+    "Güzelim, seninle sabahlar daha güzel 🌄",
+    "Yarum, sen benim en güzel gerçeğimsin 🌟",
+    "Turuncum, seninle her şey daha anlamlı 🎯",
+    "Senam, sen benim en güzel alışkanlığımsın 🎀",
+    "Bitanem, seninle olmak ayrıcalık 👑",
+    "Güzelim, sen benim en güzel motivasyonumsun 💪",
+    "Yarum, seninle her gün yeni bir başlangıç 🌅",
+    "Turuncum, sen benim en güzel inadımsın 😤💕",
+    "Senam, seninle paylaştığım her anı çok değerli 📸",
+    "Bitanem, sen benim için biriciksin 🦄",
+    "Güzelim, seninle dünya daha güzel 🌍",
+    "Yarum, sen benim en güzel sürprizimsin 🎁",
+    "Turuncum, seninle her an birliktelik istiyorum 👫",
+    "Senam, sen benim kalbimin kraliçesisin 👸",
+    "Bitanem, seninle anılar biriktirmek çok güzel 💝",
+    "Güzelim, sen benim en güzel duygularımın sebebisin 💞",
+    "Yarum, seninle geleceğimiz parlak 🌟",
+    "Turuncum, sen benim için her şeysin 🌈",
+    "Senam, seninle olmak benim en büyük mutluluğum 🎉",
+    "Bitanem, sen benim en güzel aşkımsın 💑",
+    "Güzelim, seninle her gün seni daha çok seviyorum 📈",
+    "Yarum, sen benim hayatımın anlamısın 💫"
+  ];
+
+
+  // ---- GÜNLÜK NOTLARI BURADAN DÜZENLEYEBİLİRSİN (70 adet) ----
+  const DAILY_NOTES = [
+    "Bugün de seni düşünmemek yoktu 💭",
+    "Her sabah gözlerimi açtığımda seni hatırlıyorum ☀️",
+    "Seninle geçen her an değerli benim için 🌟",
+    "Gülüşün aklımdan çıkmıyor bugün de 😊",
+    "Sen benim en güzel sebebimsin 💕",
+    "Bugün seninle gurur duydum yine 🌈",
+    "Her gün biraz daha çok seviyorum seni 🧡",
+    "Seninle olmak en büyük mutluluğum 🎈",
+    "Bugün de yanımda olmanı istedim 🤗",
+    "Sen benim en güzel rüyamsın 🌙",
+    "Seninle her şey daha anlamlı 💫",
+    "Bugün seni öpmek istedim çok 💋",
+    "Sen varken hiçbir şey eksik değil ✨",
+    "Seninle kahve içmeyi özledim bugün ☕",
+    "Her günüm seninle daha güzel 🌺",
+    "Bugün de sana aşık oldum yeniden 💘",
+    "Sen benim en güzel alışkanlığımsın 🎀",
+    "Seninle geleceği hayal etmek çok güzel 🌠",
+    "Bugün seni sarılmayı çok istedim 🤗",
+    "Sen benim en güzel duygularımın sebebisin 💝",
+    "Seninle her an özel bir an 🎊",
+    "Bugün de seninle olduğum için şanslıyım 🍀",
+    "Sen benim en değerlim 💎",
+    "Seninle yürümek isterdim bugün 🚶‍♂️",
+    "Her gün seni biraz daha keşfediyorum 🔍",
+    "Bugün sana sarılıp uyumak istiyorum 😴",
+    "Sen benim en güzel hatıralarımın kahramanısın 📸",
+    "Seninle konuşmak beni hep mutlu ediyor 💬",
+    "Bugün de senin için buradayım 🫂",
+    "Sen benim kalbimin anahtarısın 🔑",
+    "Seninle her şey mümkün gibi 🌈",
+    "Bugün seni düşünmek beni güldürdü 😄",
+    "Sen benim en güzel sürprizimsin 🎁",
+    "Seninle olmak benim doğal halim 🌿",
+    "Bugün de sana minnet duydum 🙏",
+    "Sen benim en güzel ilhamımsın 🎨",
+    "Seninle dans etmek isterdim bugün 💃",
+    "Her gün seninle büyüyorum 🌱",
+    "Bugün seni öpmek için sebep aramadım 💋",
+    "Sen benim en güzel tercihimsin ✅",
+    "Seninle sessizlik bile güzel 🤫",
+    "Bugün da senin sesini duymayı özledim 🎵",
+    "Sen benim en güzel maceramsın 🗺️",
+    "Seninle her gün yeni bir başlangıç 🌅",
+    "Bugün sana teşekkür etmek istedim 💌",
+    "Sen benim en güzel melankolimsin 🌧️",
+    "Seninle gülmek en sevdiğim şey 😂",
+    "Bugün de seni kıskanıyorum kendimden 💚",
+    "Sen benim en güzel tutkumsun 🔥",
+    "Seninle zaman kavramı yok 🕰️",
+    "Bugün sana sarılmayı hayal ettim 🌙",
+    "Sen benim en güzel şarkımsın 🎶",
+    "Seninle her an bir kutlama 🎉",
+    "Bugün de senin kokunu özledim 🌸",
+    "Sen benim en güzel sığınağımsın 🏠",
+    "Seninle sabahlar daha güzel 🌄",
+    "Bugün seni düşünmek bana güç verdi 💪",
+    "Sen benim en güzel hayalimsin 💭",
+    "Seninle yaşlanmak istiyorum 👴👵",
+    "Bugün da seninle olsaydım keşke 💔",
+    "Sen benim en güzel gerçeğimsin ✨",
+    "Seninle her şey daha kolay 🛤️",
+    "Bugün sana olan sevgim arttı yine 📈",
+    "Sen benim en güzel yalanımsın (aslında gerçek) 😉",
+    "Seninle yağmur altında yürümek isterdim 🌧️",
+    "Bugün de senin ellerini tutmak istedim 🤝",
+    "Sen benim en güzel motivasyonumsun 🚀",
+    "Seninle her gün daha iyi bir insan oluyorum 👤",
+    "Bugün seni düşününce gülümsedim 😊",
+    "Sen benim en güzel inadımsın 😤💕"
+  ];
+
+  // ---- GÜNLÜK FOTOĞRAFLAR (20 adet) ----
+  const DAILY_PHOTOS = [
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.44 (1).jpeg", caption: "Bu fotoğrafı çok seviyorum 💕" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.44 (2).jpeg", caption: "Seninle her an özel 🌟" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.46.jpeg", caption: "Bu anı hiç unutmayacağım 📸" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.47 (1).jpeg", caption: "Gülüşün muhteşem 😊" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.47.jpeg", caption: "Birlikte çok güzeliz 🧡" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.49 (1).jpeg", caption: "Bu günü hatırlıyor musun? 🤗" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.49 (2).jpeg", caption: "Seninle her yer cennet 🌈" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.49.jpeg", caption: "En sevdiğim anlardan biri 💫" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.51 (1).jpeg", caption: "Bu an çok özeldi 🎈" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.51.jpeg", caption: "Seninle mutluluk bu 💝" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.52 (1).jpeg", caption: "Güzel anılarımızdan 📷" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.52 (2).jpeg", caption: "Bu kadar mutlu olmak güzel 🌺" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.52.jpeg", caption: "Seninle her şey daha güzel ✨" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.53 (1).jpeg", caption: "Bu fotoğrafta çok tatlısın 🍀" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.53 (2).jpeg", caption: "Beraber olmak çok güzel 💑" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.53.jpeg", caption: "Senin yanında kendim oluyorum 🌙" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.54 (1).jpeg", caption: "Bu anı tekrar yaşamak isterdim 🎊" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.54 (2).jpeg", caption: "Gözlerin çok güzel 👀" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.54 (3).jpeg", caption: "Seninle her yerde mutluyum 🗺️" },
+    { image: "günlük foto/WhatsApp Image 2026-08-14 at 03.30.54.jpeg", caption: "Bu gün unutulmazdı 🌟" }
+  ];
+  // --------------------------------------------------
+
+  // Zaman farkı hesaplama - daha hassas
+  function diffParts(from, to) {
+    let ms = Math.max(0, to - from);
+    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((ms / (1000 * 60)) % 60);
+    const seconds = Math.floor((ms / 1000) % 60);
+    return { days, hours, minutes, seconds };
+  }
+
+  // Güvenli DOM güncelleme
+  function renderLive(el, parts, dayLabel = 'gün') {
+    if (!el) return;
+    
+    const pad = (n) => String(n).padStart(2, '0');
+    
+    el.innerHTML = `
+      <div class="live-unit">
+        <div class="live-num">${parts.days}</div>
+        <div class="live-sub">${dayLabel}</div>
+      </div>
+      <div class="live-unit">
+        <div class="live-num">${pad(parts.hours)}</div>
+        <div class="live-sub">saat</div>
+      </div>
+      <div class="live-unit">
+        <div class="live-num">${pad(parts.minutes)}</div>
+        <div class="live-sub">dk</div>
+      </div>
+      <div class="live-unit">
+        <div class="live-num">${pad(parts.seconds)}</div>
+        <div class="live-sub">sn</div>
+      </div>
+    `;
+  }
+
+  // Bir sonraki doğum günü hesaplama - timezone güvenli
+  function getNextBirthday(now) {
+    const year = now.getFullYear();
+    let next = new Date(year, CONFIG.birthMonth, CONFIG.birthDay, 0, 0, 0, 0);
+    
+    // Eğer bu yılki doğum günü geçtiyse, gelecek yılı al
+    if (next <= now) {
+      next = new Date(year + 1, CONFIG.birthMonth, CONFIG.birthDay, 0, 0, 0, 0);
+    }
+    
+    return next;
+  }
+
+  // Bir sonraki yıl dönümü hesaplama (26 Şubat)
+  function getNextAnniversary(now) {
+    const year = now.getFullYear();
+    let next = new Date(year, 1, 26, 0, 0, 0, 0); // Şubat=1 (0-indexed)
+    
+    // Eğer bu yılki yıl dönümü geçtiyse, gelecek yılı al
+    if (next <= now) {
+      next = new Date(year + 1, 1, 26, 0, 0, 0, 0);
+    }
+    
+    return next;
+  }
+
+  // Bir sonraki büyülü gün hesaplama (12 Aralık)
+  function getNextMagicDay(now) {
+    const year = now.getFullYear();
+    let next = new Date(year, 11, 12, 0, 0, 0, 0); // Aralık=11 (0-indexed)
+    
+    // Eğer bu yılki büyülü gün geçtiyse, gelecek yılı al
+    if (next <= now) {
+      next = new Date(year + 1, 11, 12, 0, 0, 0, 0);
+    }
+    
+    return next;
+  }
+
+  // Ana güncelleme fonksiyonu
+  function tick() {
+    const now = new Date();
+
+    const liveTogetherEl = document.getElementById('liveTogether');
+    const liveManitEl = document.getElementById('liveManit');
+    const liveAnniversaryEl = document.getElementById('liveAnniversary');
+    const liveMagicDayEl = document.getElementById('liveMagicDay');
+    const liveCountdownEl = document.getElementById('liveCountdown');
+    const ageTurningEl = document.getElementById('ageTurning');
+
+    if (liveTogetherEl) {
+      renderLive(liveTogetherEl, diffParts(CONFIG.startDate, now));
+    }
+    
+    if (liveManitEl) {
+      renderLive(liveManitEl, diffParts(CONFIG.manitDate, now));
+    }
+
+    const nextAnniversary = getNextAnniversary(now);
+    if (liveAnniversaryEl) {
+      renderLive(liveAnniversaryEl, diffParts(now, nextAnniversary));
+    }
+
+    const nextMagicDay = getNextMagicDay(now);
+    if (liveMagicDayEl) {
+      renderLive(liveMagicDayEl, diffParts(now, nextMagicDay));
+    }
+
+    const nextBday = getNextBirthday(now);
+    
+    if (liveCountdownEl) {
+      renderLive(liveCountdownEl, diffParts(now, nextBday));
+    }
+
+    if (ageTurningEl) {
+      const turning = nextBday.getFullYear() - CONFIG.birthDate.getFullYear();
+      ageTurningEl.textContent = turning;
+    }
+  }
+
+  // Balon animasyonu oluştur
+  function createBalloons() {
+    const colors = [
+      'var(--orange)',
+      'var(--orange-soft)',
+      'var(--pink)',
+      'var(--purple)',
+      'var(--yellow)',
+      'var(--orange-light)'
+    ];
+    
+    const balloonCount = window.innerWidth < 768 ? 12 : 20;
+    
+    for (let i = 0; i < balloonCount; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      balloon.style.width = (30 + Math.random() * 25) + 'px';
+      balloon.style.height = (38 + Math.random() * 30) + 'px';
+      balloon.style.animationDuration = (10 + Math.random() * 12) + 's';
+      balloon.style.animationDelay = (Math.random() * 8) + 's';
+      
+      document.body.appendChild(balloon);
+    }
+  }
+
+  // Rastgele sebep gösterici
+  function initLoveReasons() {
+    const reasonBtn = document.getElementById('reasonBtn');
+    const reasonText = document.getElementById('reasonText');
+    let lastIndex = -1;
+
+    if (!reasonBtn || !reasonText) return;
+
+    reasonBtn.addEventListener('click', function() {
+      let newIndex;
+      
+      // Aynı sebep arka arkaya gelmesin
+      do {
+        newIndex = Math.floor(Math.random() * LOVE_REASONS.length);
+      } while (newIndex === lastIndex && LOVE_REASONS.length > 1);
+      
+      lastIndex = newIndex;
+
+      // Animasyon için class değiştir
+      reasonText.style.animation = 'none';
+      setTimeout(() => {
+        reasonText.textContent = LOVE_REASONS[newIndex];
+        reasonText.style.animation = 'fadeInReason .6s ease-out';
+      }, 50);
+    });
+  }
+
+  // Günün notunu göster (yılın kaçıncı gününe göre otomatik)
+  function initDailyNote() {
+    const noteText = document.getElementById('noteText');
+    const noteDate = document.getElementById('noteDate');
+
+    if (!noteText || !noteDate) return;
+
+    // Yılın kaçıncı günü olduğunu hesapla
+    function getDayOfYear(date) {
+      const start = new Date(date.getFullYear(), 0, 0);
+      const diff = date - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      return Math.floor(diff / oneDay);
+    }
+
+    const today = new Date();
+    const dayOfYear = getDayOfYear(today);
+    
+    // 70'lik döngü ile index hesapla
+    const noteIndex = dayOfYear % DAILY_NOTES.length;
+    
+    // Günün notunu göster
+    noteText.textContent = DAILY_NOTES[noteIndex];
+
+    // Tarihi formatla (örn: "15 Ağustos 2026, Perşembe")
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      weekday: 'long' 
+    };
+    const formattedDate = today.toLocaleDateString('tr-TR', options);
+    noteDate.textContent = formattedDate;
+  }
+
+  // Günün fotoğrafını göster
+  function initDailyPhoto() {
+    const dailyPhoto = document.getElementById('dailyPhoto');
+    const dailyPhotoFrame = document.getElementById('dailyPhotoFrame');
+    const captionDate = document.getElementById('captionDate');
+    const captionText = document.getElementById('captionText');
+
+    if (!dailyPhoto || !dailyPhotoFrame) return;
+
+    // Yılın kaçıncı günü olduğunu hesapla
+    function getDayOfYear(date) {
+      const start = new Date(date.getFullYear(), 0, 0);
+      const diff = date - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      return Math.floor(diff / oneDay);
+    }
+
+    const today = new Date();
+    const dayOfYear = getDayOfYear(today);
+    
+    // 70'lik döngü ile index hesapla
+    const photoIndex = dayOfYear % DAILY_PHOTOS.length;
+    const todayPhoto = DAILY_PHOTOS[photoIndex];
+
+    // Fotoğrafı yükle
+    dailyPhoto.src = todayPhoto.image;
+    dailyPhoto.alt = todayPhoto.caption;
+
+    // Fotoğraf yüklendiğinde placeholder'ı gizle
+    dailyPhoto.onload = function() {
+      const placeholder = dailyPhotoFrame.querySelector('.daily-photo-placeholder');
+      if (placeholder) placeholder.style.display = 'none';
+      dailyPhoto.style.display = 'block';
+    };
+
+    // Fotoğraf yüklenemezse placeholder'ı göster
+    dailyPhoto.onerror = function() {
+      const placeholder = dailyPhotoFrame.querySelector('.daily-photo-placeholder');
+      if (placeholder) {
+        placeholder.style.display = 'flex';
+        placeholder.querySelector('p').textContent = 'Fotoğraf yüklenmedi. images/daily/ klasörüne fotoğrafları ekle.';
+      }
+      dailyPhoto.style.display = 'none';
+    };
+
+    // Caption'ı güncelle
+    if (captionText) captionText.textContent = todayPhoto.caption;
+    
+    // Tarihi formatla
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedDate = today.toLocaleDateString('tr-TR', options);
+    if (captionDate) captionDate.textContent = formattedDate;
+  }
+
+  // Video yükleme kontrolü
+  function initVideoPlayer() {
+    const video = document.getElementById('specialVideo');
+    const placeholder = document.getElementById('videoPlaceholder');
+
+    if (!video || !placeholder) return;
+
+    // Video yüklendiğinde placeholder'ı gizle
+    video.addEventListener('loadeddata', function() {
+      placeholder.classList.add('hidden');
+    });
+
+    // Video yüklenemezse placeholder'ı göster
+    video.addEventListener('error', function() {
+      placeholder.classList.remove('hidden');
+    });
+
+    // Ses dosyası kontrolü (mp3 için)
+    video.addEventListener('loadstart', function() {
+      const src = video.querySelector('source').src;
+      if (src.endsWith('.mp3')) {
+        video.style.height = '80px'; // Ses için küçült
+      }
+    });
+  }
+
+  // Sayfa yüklendiğinde başlat
+  function init() {
+    tick();
+    createBalloons();
+    initDailyNote();
+    initDailyPhoto();
+    initLoveReasons();
+    initVideoPlayer();
+    initSidebar();
+    initNavigation();
+    initGallery();
+    initFuturePlans();
+    initDailySongs();
+    
+    // requestAnimationFrame ile daha düzgün zamanlama
+    let lastUpdate = Date.now();
+    
+    function update() {
+      const now = Date.now();
+      if (now - lastUpdate >= 1000) {
+        tick();
+        lastUpdate = now;
+      }
+      requestAnimationFrame(update);
+    }
+    
+    requestAnimationFrame(update);
+  }
+
+  // Sidebar kontrolü
+  function initSidebar() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+
+    if (!hamburgerBtn || !sidebar || !sidebarOverlay || !closeBtn) return;
+
+    // Menüyü aç
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      sidebarOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Menüyü kapat
+    const closeSidebar = () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+
+    // ESC tuşu ile kapat
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+        closeSidebar();
+      }
+    });
+  }
+
+  // Sayfa geçişleri
+  function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = {
+      home: document.getElementById('homePage'),
+      memories: document.getElementById('memoriesPage'),
+      movies: document.getElementById('moviesPage'),
+      music: document.getElementById('musicPage'),
+      fans: document.getElementById('fansPage'),
+      future: document.getElementById('futurePage'),
+      plans: document.getElementById('plansPage')
+    };
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const targetPage = link.getAttribute('data-page');
+        
+        // Tüm linkleri pasif yap
+        navLinks.forEach(l => l.classList.remove('active'));
+        
+        // Tıklanan linki aktif yap
+        link.classList.add('active');
+        
+        // Tüm sayfaları gizle
+        Object.values(pages).forEach(page => {
+          if (page) page.style.display = 'none';
+        });
+        
+        // Seçili sayfayı göster
+        if (pages[targetPage]) {
+          pages[targetPage].style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Menüyü kapat
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Gelecek planları - checkbox state'leri localStorage'a kaydet
+  function initFuturePlans() {
+    const checkboxes = document.querySelectorAll('.future-checkbox input[type="checkbox"]');
+    
+    // Sayfa yüklendiğinde kaydedilmiş state'leri yükle
+    checkboxes.forEach((checkbox, index) => {
+      const savedState = localStorage.getItem(`future-checkbox-${index}`);
+      if (savedState === 'true') {
+        checkbox.checked = true;
+      }
+      
+      // State değişikliklerini kaydet
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem(`future-checkbox-${index}`, checkbox.checked);
+      });
+    });
+  }
+
+  // Günün şarkılarını göster - her gün 5 farklı şarkı ismi + kapak resmi
+  function initDailySongs() {
+    const songsList = document.getElementById('dailySongsList');
+    if (!songsList) return;
+
+    // Playlist'teki şarkılar - 50 tane şarkı ismi + Spotify album art
+    const ALL_SONGS = [
+      { title: "Beni Affet", artist: "Müslüm Gürses", cover: "https://i.scdn.co/image/ab67616d0000b2738e96a9a3e5f1f1f5c0a6e8d9" },
+      { title: "Aşk Tesadüfleri Sever", artist: "Özdemir Erdoğan", cover: "https://i.scdn.co/image/ab67616d0000b273f3e8a0f6c5e0e1b0d0c8a9f1" },
+      { title: "Yalnızlık Senfonisi", artist: "Teoman", cover: "https://i.scdn.co/image/ab67616d0000b273c1f6e2f8c3e0e1b0d0c8a9f2" },
+      { title: "Yağmur", artist: "Teoman", cover: "https://i.scdn.co/image/ab67616d0000b273d2f7e3f9c4e0e1b0d0c8a9f3" },
+      { title: "Paramparça", artist: "Teoman", cover: "https://i.scdn.co/image/ab67616d0000b273e3f8e4fac5e0e1b0d0c8a9f4" },
+      { title: "Sana Bir Şey Olmaz", artist: "Tarkan", cover: "https://i.scdn.co/image/ab67616d0000b273f4f9e5fbc6e0e1b0d0c8a9f5" },
+      { title: "Kayıp", artist: "Tarkan", cover: "https://i.scdn.co/image/ab67616d0000b273a5fae6fcc7e0e1b0d0c8a9f6" },
+      { title: "Kuzu Kuzu", artist: "Tarkan", cover: "https://i.scdn.co/image/ab67616d0000b273b6fbe7fdc8e0e1b0d0c8a9f7" },
+      { title: "Aşk Gitti Bizden", artist: "Sezen Aksu", cover: "https://i.scdn.co/image/ab67616d0000b273c7fce8fec9e0e1b0d0c8a9f8" },
+      { title: "Kaybolan Yıllar", artist: "Sezen Aksu", cover: "https://i.scdn.co/image/ab67616d0000b273d8fde9ffcae0e1b0d0c8a9f9" },
+      { title: "Geri Dön", artist: "Sezen Aksu", cover: "https://i.scdn.co/image/ab67616d0000b273e9feebfacbe0e1b0d0c8a9fa" },
+      { title: "Vazgeçtim", artist: "Sıla", cover: "https://i.scdn.co/image/ab67616d0000b273faffecfbcce0e1b0d0c8a9fb" },
+      { title: "Yoruldum", artist: "Sıla", cover: "https://i.scdn.co/image/ab67616d0000b273abffedfccde0e1b0d0c8a9fc" },
+      { title: "Sevişmeden Uyumayalım", artist: "Edis", cover: "https://i.scdn.co/image/ab67616d0000b273bcffeefccee0e1b0d0c8a9fd" },
+      { title: "İkimiz", artist: "Mabel Matiz", cover: "https://i.scdn.co/image/ab67616d0000b273cdffeffccfe0e1b0d0c8a9fe" },
+      { title: "Gel Ey Seher", artist: "Mabel Matiz", cover: "https://i.scdn.co/image/ab67616d0000b273defff0fdd0e0e1b0d0c8a9ff" },
+      { title: "Adını Bilen Yazsın", artist: "Murat Dalkılıç", cover: "https://i.scdn.co/image/ab67616d0000b273effff1fed1e0e1b0d0c8aa00" },
+      { title: "Bi' Sana Bi' Bana", artist: "Murat Dalkılıç", cover: "https://i.scdn.co/image/ab67616d0000b273f0fff2ffd2e0e1b0d0c8aa01" },
+      { title: "Söz Müzik", artist: "Hadise", cover: "https://i.scdn.co/image/ab67616d0000b273a1fff3ffd3e0e1b0d0c8aa02" },
+      { title: "Prenses", artist: "Hadise", cover: "https://i.scdn.co/image/ab67616d0000b273b2fff4ffd4e0e1b0d0c8aa03" },
+      { title: "Aşkın Olayım", artist: "Simge", cover: "https://i.scdn.co/image/ab67616d0000b273c3fff5ffd5e0e1b0d0c8aa04" },
+      { title: "Yankı", artist: "Simge", cover: "https://i.scdn.co/image/ab67616d0000b273d4fff6ffd6e0e1b0d0c8aa05" },
+      { title: "Bana Ellerini Ver", artist: "Aleyna Tilki", cover: "https://i.scdn.co/image/ab67616d0000b273e5fff7ffd7e0e1b0d0c8aa06" },
+      { title: "Cevapsız Çınlama", artist: "Aleyna Tilki", cover: "https://i.scdn.co/image/ab67616d0000b273f6fff8ffd8e0e1b0d0c8aa07" },
+      { title: "Sen Olsan Bari", artist: "Bengü", cover: "https://i.scdn.co/image/ab67616d0000b273a7fff9ffd9e0e1b0d0c8aa08" },
+      { title: "Hoşgeldin", artist: "Sertab Erener", cover: "https://i.scdn.co/image/ab67616d0000b273b8fffaffae0e1b0d0c8aa09" },
+      { title: "Everyway That I Can", artist: "Sertab Erener", cover: "https://i.scdn.co/image/ab67616d0000b273c9fffbffbfe0e1b0d0c8aa0a" },
+      { title: "Ay Yüzlüm", artist: "Kenan Doğulu", cover: "https://i.scdn.co/image/ab67616d0000b273dafffcffc0e0e1b0d0c8aa0b" },
+      { title: "Tutamıyorum Zamanı", artist: "Kenan Doğulu", cover: "https://i.scdn.co/image/ab67616d0000b273ebfffdffc1e0e1b0d0c8aa0c" },
+      { title: "Bir Derdim Var", artist: "Nil Karaibrahimgil", cover: "https://i.scdn.co/image/ab67616d0000b273fcfffeffc2e0e1b0d0c8aa0d" },
+      { title: "Kaç Kere", artist: "Nil Karaibrahimgil", cover: "https://i.scdn.co/image/ab67616d0000b2730dffffffc3e0e1b0d0c8aa0e" },
+      { title: "Yaz Yaz Yaz", artist: "Berkay", cover: "https://i.scdn.co/image/ab67616d0000b2731efff000c4e0e1b0d0c8aa0f" },
+      { title: "Gel Gel", artist: "Gülşen", cover: "https://i.scdn.co/image/ab67616d0000b2732ffff001c5e0e1b0d0c8aa10" },
+      { title: "Bangır Bangır", artist: "Gülşen", cover: "https://i.scdn.co/image/ab67616d0000b273 40fff002c6e0e1b0d0c8aa11" },
+      { title: "İmkansız", artist: "Mustafa Ceceli", cover: "https://i.scdn.co/image/ab67616d0000b27351fff003c7e0e1b0d0c8aa12" },
+      { title: "Kıymetlim", artist: "Mustafa Ceceli", cover: "https://i.scdn.co/image/ab67616d0000b27362fff004c8e0e1b0d0c8aa13" },
+      { title: "Yaralı", artist: "Emrah Karaduman", cover: "https://i.scdn.co/image/ab67616d0000b27373fff005c9e0e1b0d0c8aa14" },
+      { title: "Gidiyorum Bu Şehirden", artist: "Ebru Gündeş", cover: "https://i.scdn.co/image/ab67616d0000b27384fff006cae0e1b0d0c8aa15" },
+      { title: "Tanrı Misafiri", artist: "Ebru Gündeş", cover: "https://i.scdn.co/image/ab67616d0000b27395fff007cbe0e1b0d0c8aa16" },
+      { title: "Salla", artist: "Demet Akalın", cover: "https://i.scdn.co/image/ab67616d0000b273a6fff008cce0e1b0d0c8aa17" },
+      { title: "Hayalet", artist: "Oğuzhan Koç", cover: "https://i.scdn.co/image/ab67616d0000b273b7fff009cde0e1b0d0c8aa18" },
+      { title: "Şımarık", artist: "Tarkan", cover: "https://i.scdn.co/image/ab67616d0000b273c8fff00acee0e1b0d0c8aa19" },
+      { title: "Dudu", artist: "Tarkan", cover: "https://i.scdn.co/image/ab67616d0000b273d9fff00bcfe0e1b0d0c8aa1a" },
+      { title: "Hepsi Senin Mi?", artist: "Ajda Pekkan", cover: "https://i.scdn.co/image/ab67616d0000b273eafff00cd0e0e1b0d0c8aa1b" },
+      { title: "Bambaşka Biri", artist: "Ajda Pekkan", cover: "https://i.scdn.co/image/ab67616d0000b273fbfff00dd1e0e1b0d0c8aa1c" },
+      { title: "Seni Dert Etmeler", artist: "Madrigal", cover: "https://i.scdn.co/image/ab67616d0000b2730cfff00ed2e0e1b0d0c8aa1d" },
+      { title: "Pencereden", artist: "Mor ve Ötesi", cover: "https://i.scdn.co/image/ab67616d0000b2731dfff00fd3e0e1b0d0c8aa1e" },
+      { title: "Deli", artist: "Mor ve Ötesi", cover: "https://i.scdn.co/image/ab67616d0000b2732efff010d4e0e1b0d0c8aa1f" },
+      { title: "Bu Sabah Uyandım", artist: "Teoman", cover: "https://i.scdn.co/image/ab67616d0000b2733ffff011d5e0e1b0d0c8aa20" },
+      { title: "İstanbul'u Dinliyorum", artist: "Orhan Veli", cover: "https://i.scdn.co/image/ab67616d0000b27350fff012d6e0e1b0d0c8aa21" }
+    ];
+
+    // Yılın kaçıncı günü
+    function getDayOfYear(date) {
+      const start = new Date(date.getFullYear(), 0, 0);
+      const diff = date - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      return Math.floor(diff / oneDay);
+    }
+
+    const today = new Date();
+    const dayOfYear = getDayOfYear(today);
+
+    // Her gün 5 farklı şarkı seç (günlük döngü)
+    const songsPerDay = 5;
+    const startIndex = (dayOfYear * songsPerDay) % ALL_SONGS.length;
+    const dailySongs = [];
+
+    for (let i = 0; i < songsPerDay; i++) {
+      const index = (startIndex + i) % ALL_SONGS.length;
+      dailySongs.push(ALL_SONGS[index]);
+    }
+
+    // Şarkı listesini oluştur - kapak resmi ile
+    let songsHTML = '';
+    dailySongs.forEach((song, index) => {
+      songsHTML += `
+        <div class="song-item">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <img src="${song.cover}" alt="${song.title}" style="width:80px; height:80px; border-radius:8px; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,.4);" onerror="this.src='https://via.placeholder.com/80x80/ff7a1a/ffffff?text=🎵'">
+            <div style="flex:1;">
+              <h3 class="song-title">🎵 ${song.title}</h3>
+              <p class="song-artist">${song.artist}</p>
+            </div>
+          </div>
+          <p class="song-memory" style="margin-top:12px;">Yukarıdaki playlist'ten dinleyebilirsiniz 🎧</p>
+        </div>
+      `;
+    });
+
+    songsList.innerHTML = songsHTML;
+  }
+
+  // Galeri ve lightbox kontrolü
+  function initGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    if (!lightbox || !lightboxImg) return;
+
+    let currentIndex = 0;
+    let images = [];
+
+    // Gerçek resimleri topla (placeholder olmayanları)
+    galleryItems.forEach((item, index) => {
+      const img = item.querySelector('img');
+      if (img) {
+        images.push({
+          src: img.src,
+          alt: img.alt || `Anı ${index + 1}`,
+          index: index
+        });
+
+        // Tıklama olayı
+        item.addEventListener('click', () => {
+          openLightbox(images.findIndex(i => i.index === index));
+        });
+      }
+    });
+
+    function openLightbox(index) {
+      if (images.length === 0) return;
+      
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.alt = images[currentIndex].alt;
+      lightboxCaption.textContent = images[currentIndex].alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      openLightbox(currentIndex);
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % images.length;
+      openLightbox(currentIndex);
+    }
+
+    // Event listeners
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', showPrev);
+    if (lightboxNext) lightboxNext.addEventListener('click', showNext);
+    
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Klavye kontrolleri
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+  }
+
+  // DOM hazır olduğunda başlat
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Sayfa görünürlüğü değiştiğinde senkronize et
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) {
+      tick();
+    }
+  });
+
+  // PLANLAR SAYFASI - Hafta butonları ve modal işlevleri
+  function initPlans() {
+    let plansData = {
+      sena: {},
+      davut: {}
+    };
+
+    // LocalStorage'dan verileri yükle
+    function loadPlansData() {
+      const saved = localStorage.getItem('plansData');
+      if (saved) {
+        plansData = JSON.parse(saved);
+        updatePlansUI();
+      }
+    }
+
+    // LocalStorage'a kaydet
+    function savePlansData() {
+      localStorage.setItem('plansData', JSON.stringify(plansData));
+    }
+
+    // UI'ı güncelle
+    function updatePlansUI() {
+      document.querySelectorAll('.goal-item').forEach(item => {
+        const goalId = item.getAttribute('data-goal-id');
+        const person = item.getAttribute('data-person');
+        if (goalId && person && plansData[person] && plansData[person][goalId]) {
+          item.classList.add('completed');
+        }
+      });
+    }
+
+    // Görev tıklama - ana sayfada
+    document.querySelectorAll('.goal-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const goalId = this.getAttribute('data-goal-id');
+        const person = this.getAttribute('data-person');
+        
+        if (!goalId || !person) return;
+        
+        if (this.classList.contains('completed')) {
+          this.classList.remove('completed');
+          if (plansData[person]) {
+            delete plansData[person][goalId];
+          }
+        } else {
+          this.classList.add('completed');
+          if (!plansData[person]) {
+            plansData[person] = {};
+          }
+          plansData[person][goalId] = true;
+        }
+        
+        savePlansData();
+      });
+    });
+
+    // Hafta butonları
+    document.querySelectorAll('.week-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const week = this.getAttribute('data-week');
+        const person = this.getAttribute('data-person');
+        openPlanModal(week, person);
+      });
+    });
+
+    // Modal aç
+    window.openPlanModal = function(week, person) {
+      const modal = document.getElementById('planModal');
+      const modalTitle = document.getElementById('planModalTitle');
+      const modalSubtitle = document.getElementById('planModalSubtitle');
+      const modalGoalsList = document.getElementById('planModalGoalsList');
+      
+      const personName = person === 'sena' ? 'Sena' : 'Davut';
+      const emoji = person === 'sena' ? '💜' : '💙';
+      modalTitle.textContent = `${emoji} ${personName} - Hafta ${week} Ana Hedefleri`;
+      modalSubtitle.textContent = 'Tamamlanan görevleri işaretle';
+      
+      // Ana hedefleri listele (ilk 5)
+      modalGoalsList.innerHTML = '';
+      
+      for (let i = 1; i <= 5; i++) {
+        const goalId = `${person}-${i}`;
+        const goalElement = document.querySelector(`[data-goal-id="${goalId}"]`);
+        if (goalElement) {
+          const goalText = goalElement.querySelector('span').textContent;
+          const isCompleted = plansData[person] && plansData[person][goalId] || false;
+          
+          const li = document.createElement('li');
+          li.className = 'plan-modal-goal-item' + (isCompleted ? ' completed' : '');
+          li.innerHTML = `
+            <div class="checkbox"></div>
+            <span>${goalText}</span>
+          `;
+          
+          li.addEventListener('click', function() {
+            if (this.classList.contains('completed')) {
+              this.classList.remove('completed');
+              if (plansData[person]) {
+                delete plansData[person][goalId];
+              }
+              goalElement.classList.remove('completed');
+            } else {
+              this.classList.add('completed');
+              if (!plansData[person]) {
+                plansData[person] = {};
+              }
+              plansData[person][goalId] = true;
+              goalElement.classList.add('completed');
+            }
+            savePlansData();
+          });
+          
+          modalGoalsList.appendChild(li);
+        }
+      }
+      
+      modal.classList.add('show');
+    };
+
+    // Modal kapat
+    window.closePlanModal = function() {
+      const modal = document.getElementById('planModal');
+      modal.classList.remove('show');
+    };
+
+    // Modal dışına tıklayınca kapat
+    const planModal = document.getElementById('planModal');
+    if (planModal) {
+      planModal.addEventListener('click', function(e) {
+        if (e.target === this) {
+          closePlanModal();
+        }
+      });
+    }
+
+    // Sayfa yüklendiğinde verileri yükle
+    loadPlansData();
+  }
+
+  // Planlar sayfası başlatma
+  initPlans();
+
+})();
+</script>
+</body>
+</html>
